@@ -55,8 +55,7 @@ public class UserServlet extends HttpServlet {
 		String username,
 		       password,
 		       rememberMe;
-			System.out.println("Request.getAtribute(\"username\") = " + request.getAttribute("username") );
-				
+		
 			HttpSession s = request.getSession();
 			Boolean isValid;
 			//getUsername

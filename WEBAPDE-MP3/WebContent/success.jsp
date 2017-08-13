@@ -24,7 +24,7 @@
 
 </head>
 <body>
-	   <div id="welcome"><p id="welcometag"><strong> Welcome,</strong> admin!</p><br>
+	   <div id="welcome"><p id="welcometag"><strong> Welcome,</strong> ${un}</p><br>
             
        <a class="waves-effect waves-light btn" id="proceedb" href="userfeed.jsp">Proceed</a> 
   

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class Authenticate
  */
-@WebFilter (urlPatterns={"/Access-Denied.html", "/homepage.jsp", "/userfeed.jsp", "/profile.jsp", "/success.jsp",  "/upload.jsp"})
+@WebFilter (urlPatterns={"*.html", "*.jsp"})
 public class Authenticate implements Filter {
 	private HttpServletRequest req;
 	private HttpServletResponse res;
@@ -67,20 +67,11 @@ public class Authenticate implements Filter {
 			case "/homepage.jsp": 
 			case "/Access-Denied.html": 
 					if(proceed) { //forward to the welcome servlet.
-							System.out.println("Forwarding to welcome..");
-							//req.getRequestDispatcher("welcome").forward(request, response);
-							if(url.equals("/Access-denied.html"))
-								res.sendRedirect("welcome");
-							else res.sendRedirect("userfeed.jsp");
+							System.out.println("Forwarding to userfeed");
+							res.sendRedirect("userfeed.jsp");
 					}
-//					else if (url.equals("/Access-Denied.html")) {//if user is trying to access access-denied, redirect to homepage.
-//
-//							System.out.println("Continue to its page..");
-//							chain.doFilter(request, response);
-//					
-//					}
 					
-					else {//If its the homepage.jsp, just proceed.
+					else {
 						System.out.println("Continue to its page..");
 						chain.doFilter(request, response);
 					}
@@ -97,19 +88,14 @@ public class Authenticate implements Filter {
 				}
 				else {
 					System.out.println("Redirect to access denied..");
-					
 					res.sendRedirect("Access-Denied.html");
-
 				}
 				
 				 break;
 		}
 		System.out.println("---------------------------\n\n");
-
-	
-	
-	
 	}
+
 
 	/**
 	 * @see Filter#init(FilterConfig)
