@@ -33,7 +33,13 @@
             <div id="left">
                 <p>Select file</p>
                 <form method="post" action="upload" id="uploadPic">
-                <input type="file" id= "uploadb" name="pic" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus"></form>
+                <input type="file" id= "uploadb" name="pic" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus">
+                Uploaded by: <input type="text" name = "uploader"><br>
+                Title: <input type = "text" name ="title"><br>
+                Description: <input type = "text" name = "description"><br>
+                Privacy: <input type = "text" name = "privacy"> <br>
+                Tags: <input type = "text" name = "tags"><br>
+                </form>
                 
                 <div id="question">
 	                <a class="waves-effect waves-light btn" id="upload">Upload</a> <br>

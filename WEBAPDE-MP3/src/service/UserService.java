@@ -1,10 +1,14 @@
 package service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
+import bean.Tag;
 import bean.Users;
 
 
@@ -29,5 +33,31 @@ public class UserService {
 		finally {
 			em.close();
 		}
+	}
+	
+	public static boolean checkUser(String username, String password) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		
+		EntityManager em = emf.createEntityManager();
+		List<Users> user = null;
+		
+		try {
+			TypedQuery<Users> query = em.createQuery("SELECT users FROM users users WHERE users_username = ?1", Users.class);
+			query.setParameter(1, username);
+			user = query.getResultList();
+			if(user.isEmpty()) {
+				return false;
+			}
+			else {
+				if(user.get(0).getUsers_password().equals(password))
+					return true;
+				else return false;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			em.close();
+		}
+		return false;
 	}
 }

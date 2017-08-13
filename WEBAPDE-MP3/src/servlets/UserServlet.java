@@ -72,7 +72,8 @@ public class UserServlet extends HttpServlet {
 			//isValid = UserService.validateUser(username, password);
 			
 			//If its a valid username and password, forward to success page
-			if(username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("nyeam") /*theService.isValid(username, password)*/) {
+//			if(username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("nyeam") /*theService.isValid(username, password)*/) {
+			if(UserService.checkUser(username, password)) {
 				RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
 
 				
