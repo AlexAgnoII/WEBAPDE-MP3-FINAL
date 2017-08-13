@@ -23,7 +23,25 @@
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script> 
     </head>
+    
+    <script>
+        function showLogin() {
+            $("#logindiv").slideToggle();
+        }
+        
+        $(document).ready(function(){
+            $('.modal').modal({
+                dismissible: true, 
+                opacity: 0.7,
+                startingTop: '20%',
+                endingTop: '30%',
+            });
+          });
 
+    
+    
+    </script>
+        
     <body>
     
     	<div id="left"></div>
@@ -63,15 +81,23 @@
     
         
         <div id="feed">
-            <img src="img/1.jpg" class="img">
-            <img src="img/4.jpg" class="img">
-            <img src="img/3.jpg" class="img">
-            <img src="img/1.jpg" class="img">
-            <img src="img/4.jpg" class="img">
-            <img src="img/3.jpg" class="img">
-             <img src="img/1.jpg" class="img">
-            <img src="img/4.jpg" class="img">
-            <img src="img/3.jpg" class="img">
+            <img src="img/public/1.jpg" class="img">
+            <img src="img/public/2.jpg" class="img">
+            <img src="img/public/3.jpg" class="img">
+            <img src="img/public/4.jpg" class="img">
+            <img src="img/public/5.jpg" class="img">
+            <img src="img/public/6.jpg" class="img">
+            <img src="img/public/7.jpg" class="img">
+            <img src="img/public/8.jpg" class="img">
+            <img src="img/public/9.jpg" class="img">
+            <img src="img/public/10.jpg" class="img">
+            <img src="img/public/11.jpg" class="img">
+            <img src="img/public/12.jpg" class="img">
+            <img src="img/public/13.jpg" class="img">
+            <img src="img/public/14.jpg" class="img">
+            <img src="img/public/15.jpg" class="img">
+ 
+            <a href="#" id="showb">show more</a>
         </div>
         
         
@@ -93,20 +119,15 @@
     </body>
     
     <script>
-	    function showLogin() {
-	        $("#logindiv").slideToggle();
-	    }
-    
-    	//Document here
         $("document").ready(function() {
             $(function () {
-                $(".pics").slice(0, 6).show();
+                $(".img").slice(0, 6).show();
                  $("#showb").on('click', function (e) {
                     e.preventDefault();
                     $("#showb").fadeOut(150); 
                     $("#showb").fadeIn(150); 
-                    $(".pics:hidden").slice(0, 3).fadeIn(900);
-                    if ($(".pics:hidden").length == 0) {
+                    $(".img:hidden").slice(0, 3).fadeIn(900);
+                    if ($(".img:hidden").length == 0) {
                         $("#showb").fadeOut("fast");
                     }
 
@@ -156,14 +177,6 @@
             //Submit form once image if clicked.
             $("a#search").click(function() {
                 $("form#searchBar").submit();
-            });
-            
-            //modal effect
-            $('.modal').modal({
-                dismissible: true, 
-                opacity: 0.7,
-                startingTop: '20%',
-                endingTop: '30%',
             });
         });
 

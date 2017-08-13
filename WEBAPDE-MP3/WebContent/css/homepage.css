@@ -30,7 +30,6 @@
     border-color: #100077;
     border-width: 10px;
     border-bottom: 0px;
-
     z-index: 5;   
 }
 
@@ -58,12 +57,18 @@
     border-right: 0px;  
 }
 
+#search {
+    background-color: #100077;
+    float: right;
+    height: 42px;
+}
 
 #searchbox {
-    width: 10%;
+    width: 90%;
     height: 24px; 
     margin-top: 8px;
     margin-right: 5px;
+    margin-left: 5px;
     float: right;
     background: white;
     border-style: solid;
@@ -85,7 +90,8 @@
     width: 100px;  
     font-size: 12px;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 11px;
+
 }
 
 #loginb:hover {
@@ -102,7 +108,7 @@
     background-color: #100077;
     width: 85px;
     height: 87px;
-    margin-top: 15px;
+    margin-top: 25px;
     margin-left: 0px;
     position: absolute;
     border-bottom-right-radius: 2px;
@@ -116,19 +122,17 @@
     line-height: 95%;
     color: white;
     margin-left: 8px;
-    margin-top: 8px;
-   
-    
+    margin-top: 8px;   
 }
 
 #signupdiv {
     float: left;
     top: 150px;
-    left: 10px;
     height: 300px;
-    width: 275px;
-    border-bottom-right-radius: 2px;
-    border-top-right-radius: 2px;
+    width: 290px;
+    margin-left: 10px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
     background-color: #100077;
     position: fixed;
     box-shadow: 0 5px 5px -5px #333;
@@ -137,6 +141,7 @@
 #signupwrapper {
     position: relative;
     margin-top: 40px;
+    margin-left: 10px;
     text-align: center;
 }
 
@@ -161,7 +166,7 @@
     margin-bottom: 3px;
     margin-top: 2px;
     margin-left: 15px;
-    border-radius: 4px;
+    border-radius: 3px;
     border-style: solid;
     border-color: #0e0163;
     border-width: 1.25px;
@@ -178,7 +183,7 @@
     width: 230px;
     height: 50px;
     float: left;
-    border-radius: 4px;
+    border-radius: 3px;
     border-style: solid;
     border-color: #0e0163;
     border-width: 1.25px;
@@ -204,7 +209,7 @@
     margin-top: 15px;
     background: white;
     border: 1px solid snow;
-    border-radius: 4px;
+    border-radius: 3px;
     border-color: black;
     font-family: "Poppins";
     font-size: 10px;
@@ -231,6 +236,7 @@
 .img {
     height: 45%;;
     margin: 10px; 
+    display: none;
 }
 
 .img:hover {
@@ -276,26 +282,6 @@
     border-color: #100077;
 }
 
-
-------------------------------------------------------------------
-
-#check {
-    display: block;
-    color: snow;
-    font-size: 35px;
-}
-
-#wrapper {
-    text-align: left;
-    height: 550px;
-}
-
-
-#userpng {
-    padding: 0px;
-    font-size: 30px;    
-}
-
 #caption {
     font-family: "Raleway";
     font-size: 11px;
@@ -313,49 +299,47 @@
 }
 
 #showb {
-    font-family: "Open Sans Condensed";
+    font-family: "Poppins";
     font-size: 12px;
-    background: rgba(0, 0, 0, 0.9);
+    background: #100077;
     border-style: solid;
-    border-color: snow;
+    border-color: #100077;
     border-radius: 5px;
     border-width: 1px;
     color: snow;
     display: flex;
     margin: 0 auto;
-    width: 95%;
+    width: 88%;
     padding: 5px;
 	justify-content: center;
 	transition: all 500ms ease-in-out;
-
+    box-shadow: 0 5px 5px -5px #333;
 }
 
 #showb:hover {
     background-color: snow;
-    color: black;
+    color: #100077;
     border-style: solid;
-    border-color: black;
+    border-color: #100077;
     border-radius: 5px;
-    border-width: 1.5px;
+    border-width: 1px;
 }
-
-
 
 .checkbox-black.filled-in[type="checkbox"] + label:after{
   	border: 2px solid snow;
  	background: transparent;
 }
+
 .checkbox-black.filled-in[type="checkbox"]:checked + label:after{
  	background: black;
 }
+
 .checkbox-black.filled-in[type="checkbox"]:checked + label:before{
 	 border-top: 2px solid transparent;
 	 border-left: 2px solid transparent;
 	 border-right: 2px solid #fff;
 	 border-bottom: 2px solid #fff;
 }
-
-
 
 a#search:hover{
 	cursor:pointer;
