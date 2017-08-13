@@ -1,0 +1,231 @@
+@import url(//fonts.googleapis.com/css?family=Vidaloka);
+@import url(//fonts.googleapis.com/css?family=Raleway:400,600,900);
+@import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+
+body {
+     background: linear-gradient(#780206, #061161);
+    background-attachment: fixed;
+}
+
+#header {
+    background-color: snow;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top: 0;  
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+#searchbox {
+    width: 15%;
+    height: 23px;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-right: 5px;
+    float: right;
+    background: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+#magglass {
+    color: black;
+    float: right;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.picwrapper {
+    width: 40%;
+    height: 80%;
+    margin: 0 auto;
+    background-color: snow;
+    padding: 0px;
+    padding-bottom: 50px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    align-content: center;
+}
+
+.pics {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 1%;
+    border-style: solid;
+    border-color: rgba (0, 0, 0, 0.7);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    display: block;  
+}
+
+.picwrapper .un {
+    font-family: "Raleway";
+    text-align: left;
+    font-size: 14px;
+    width: 70%;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    padding-left: 5%;
+    display: inline;
+    float: left;
+}
+
+.caption {
+    font-family: "Raleway";
+    text-align: left;
+    float: left;
+    font-size: 80%;
+    width: 95%;
+    font-weight: 400;
+    margin-top: 0px;
+    padding-left: 7%;
+}
+
+#addtag {
+    float: right;
+    padding-right: 5%;
+}
+
+#header #dropmenu {
+    float: left;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.9);
+    color: snow;
+    font-family: "Raleway";
+    border-radius: 0px;
+    width: 20px;
+    text-align: center;
+}
+
+#icon {
+	margin-top: 8px;
+    left: -10px;
+    position: relative;
+}
+
+#feed {
+    position: relative;
+    top: 40px;
+    text-align: center;
+}
+
+#showb {
+    font-family: "Open Sans Condensed";
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    border-style: solid;
+    border-color: snow;
+    border-radius: 5px;
+    border-width: 1px;
+    color: snow;
+    display: flex;
+    margin: 0 auto;
+    width: 40%;
+    padding: 5px;
+	justify-content: center;
+	transition: all 500ms ease-in-out;
+
+}
+
+#showb:hover {
+    background-color: transparent;
+    color: snow;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    border-width: 1.5px;
+}
+
+#tagdiv {
+	position: relative;
+    width: 20%;
+    height: 70%;
+    top: 50%;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    overflow: scroll;
+
+}
+
+#tags {
+    width: 70%;
+    height: 23px;
+    border-radius: 4px;
+    border-color: black;
+    border-style: solid;
+    border-width: 0.5px;
+    margin-top: 0px;
+    padding: 0px;
+    background: white;   
+    display: inline;
+}
+
+#aticon {
+    display: inline-block;
+    margin-top: 0px;
+    
+}
+
+-------------------
+
+#pics {
+    width: 95%;
+    padding: 5px;
+}
+
+.card {
+    width: 40%;
+    margin: 0 auto;
+    height: 95%;
+    display: none;
+}
+
+#un {
+	position: relative;
+	top: -50%;
+    font-family: "Raleway";
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 10px;
+    display: block;
+    float: left;
+    line-height: 100%;
+}
+
+.card-content {
+	padding: 0px;
+	margin: 0px;
+	height: 100px;
+}
+
+#caption {
+	position: relative;
+	top: -100%;
+    font-family: "Raleway";
+    text-align: left;
+    float: left;
+    font-size: 80%;
+    width: 100%;
+    font-weight: 400;
+    margin-top: 0px;
+    padding-left: 4%;
+    padding-right: 2%;
+}
+
+.card-reveal #idtagname {
+    font-family: "Raleway";
+    text-align: left;
+    font-size: 15px;
+}
