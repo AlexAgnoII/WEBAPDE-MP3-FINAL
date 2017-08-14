@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400, 500');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700');
 
 #top, #bottom, #left, #right {
 	background: #100077;
@@ -197,7 +197,7 @@
     border-color: black;
     font-family: "Poppins";
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 700;
     color: #100077;
 }
 

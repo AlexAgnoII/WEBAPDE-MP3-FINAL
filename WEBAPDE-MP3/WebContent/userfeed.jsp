@@ -34,13 +34,20 @@
 		<div id="top"></div>
 		<div id="bottom"></div>
         
+         <div id="searchmodal" class="modal">
+            <div class="modal-content">
+                <a id="searchbmodal"><i class="material-icons" id="magglassmodal">search</i></a>
+                <form method="get" action="photoSearch" id="searchBar"><input type="text" id="searchbox" name="search"></form>
+                
+            </div>
+         </div> 
+        
         <div id="navbar">
             <div id="tbox">
                 <p id="title"> this.<br>pic </p>
             </div>
             
-            <a id="search"><i class="material-icons" id="magglass">search</i></a>
-            <form method="get" action="photoSearch" id="searchBar"><input type="text" id="searchbox" name="search"></form>
+              <a class="modal-trigger" href="#searchmodal" id="searchb"><i class="material-icons" id="magglass">search</i></a>
             
             <a href="logout" id="logoutb">LOGOUT</a> 
             
@@ -111,7 +118,7 @@
                 </div>
                 
                 <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
+                    <p class="uname">admin_</p><br><br>
                     <li style="list-style-type:none"><div class="divider"></div></li>
                     <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                 </div>
@@ -147,7 +154,7 @@
                 </div>
                 
                 <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
+                    <p class="uname">admin_</p><br><br>
                     <li style="list-style-type:none"><div class="divider"></div></li>
                     <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                 </div>
@@ -183,7 +190,7 @@
                 </div>
                 
                 <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
+                    <p class="uname">admin_</p><br><br>
                     <li style="list-style-type:none"><div class="divider"></div></li>
                     <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                 </div>
@@ -219,7 +226,7 @@
                 </div>
                 
                 <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
+                    <p class="uname">admin_</p><br><br>
                     <li style="list-style-type:none"><div class="divider"></div></li>
                     <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                 </div>
@@ -253,8 +260,6 @@
            <a href="#" id="showb">show more</a>
             
         </div>
-        
-        <script src="scripts/userfeedScript.js">
-        </script>
+ 
 </body>
 </html>
