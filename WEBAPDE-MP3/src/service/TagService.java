@@ -17,31 +17,32 @@ public class TagService {
 		return tagList;
 	}
 	
-	public static void checkTag(String tag) {
+	public static Tag checkTag(String inputTag) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
-		
 		EntityManager em = emf.createEntityManager();
 		List<Tag> tagList = null;
+		Tag newTag = new Tag();
 		try {
 			TypedQuery<Tag> query = em.createQuery("SELECT tag FROM tag tag WHERE tag_name = ?1", Tag.class);
-			query.setParameter(1, tag);
+			query.setParameter(1, inputTag);
 			tagList = query.getResultList();
 			System.out.println("tagList contains: ");
-			for(Tag t: tagList)
-				System.out.println(t.getTag_name());
-			if (tagList.isEmpty()) {
-				Tag t = new Tag();
-				t.setTag_name(tag);
-				TagService.addTag(t);
-			}
-			else {
-				//add to tag photo relation
+			for(Tag resultTag: tagList) {
+				if (tagList.isEmpty()) {
+					newTag.setTag_name(inputTag);
+					TagService.addTag(newTag);
+				}
+				else {
+					newTag.setTag_name(resultTag.getTag_name());
+					newTag.setTag_id(resultTag.getTag_id());
+				}
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
 			em.close();
 		}
+		return newTag;
 	}
 	
 	public static void addTag(Tag t) {

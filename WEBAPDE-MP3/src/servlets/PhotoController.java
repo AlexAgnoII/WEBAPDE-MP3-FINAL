@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Photo;
 import bean.Tag;
+import bean.Tag_Photo_Relation;
 import service.PhotoService;
+import service.TagPhotoService;
 import service.TagService;
 
 /**
@@ -86,8 +89,20 @@ public class PhotoController extends HttpServlet {
 		PhotoService.addPhoto(p);
 		
 		String tagNames[] = TagService.split(request.getParameter("tags"));
+		ArrayList<Tag> tagObjects = new ArrayList<Tag>();
 		for(String t: tagNames)
-			System.out.println(t);
+			tagObjects.add(TagService.checkTag(t));
+		
+		//add Tag Photo Relation
+		Tag_Photo_Relation tpr = new Tag_Photo_Relation();
+		tpr.setPhoto_id(p.getPhoto_id());
+		for(Tag t: tagObjects) {
+			tpr.setTag_id(t.getTag_id());
+			TagPhotoService.addTagPhotoRelation(tpr);
+		}
+		//if private, map shared photos
+		
+		//message once it's done
 		System.out.println("Photo added!");
 		System.out.println(request.getParameter("pic"));
 		System.out.println("I added photos.");

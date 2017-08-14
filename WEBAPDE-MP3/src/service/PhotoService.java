@@ -52,11 +52,5 @@ public class PhotoService {
 			em.close();
 		}
 	}
-	
-	public static void main(String[] args) {
-		List<Photo> photoList = PhotoService.getPublicPhotos();
-		for(Photo p: photoList) {
-			System.out.println(p.toString());
-		}
-	}
+
 }
