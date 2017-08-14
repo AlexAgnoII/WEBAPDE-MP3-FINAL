@@ -39,9 +39,22 @@
                 <a id="searchbmodal"><i class="material-icons" id="magglassmodal">search</i></a>
                 <form method="get" action="photoSearch" id="searchBar">
                 <input type="text" id="searchbox" name="search"></form>
-                
-                
             </div>
+         </div>
+         
+          <div id="uploadmodal" class="modal">
+		        UPLOAD STUFF GOES HERE
+		        
+		  </div>
+        
+         <div id="sharepicmodal" class="modal">
+       		 	SHARE PIC  STUFF GOES HERE
+        
+         </div>
+        
+         <div id="addtagmodal" class="modal">
+        		ADD TAG STUFF GOES HERE
+        
          </div> 
         
         <div id="navbar">
@@ -51,7 +64,7 @@
                  <ul id="menu" class='dropdown-content'>
                   <li><a href="userfeed.jsp">home</a></li>
                   <li><a href="profile.jsp">profile</a></li>
-                  <li><a href="logout">logout</a></li>
+                  <li><a class="modal-trigger" href="#uploadmodal">upload</a></li>
                    <!-- Redirects to logout servlet. -->
               </ul>
             
@@ -78,9 +91,9 @@
                 </div>
                 
                 <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
+                      <a class="modal-trigger" href="#sharepicmodal" id="sharepicb"><i class="material-icons" id="logos">supervisor_account</i></a>
                     
-                    <i class="material-icons" id="logos">add_location</i>
+                    <a class="modal-trigger" href="#addtagmodal" id="addtagb"><i class="material-icons" id="logos">add_location</i></a>
                 </div>
             </div>
        	

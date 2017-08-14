@@ -314,3 +314,13 @@ a#searchbmodal:hover{
 p{
     text-transform: none;
 }
+
+#uploadmodal, #sharepicmodal, #addtagmodal {
+    position: absolute;
+    margin: 10 auto;
+    width: 42%;
+    height: 63%;
+    text-align: left;
+    border-radius: 3.5px;
+    display: none; 
+}

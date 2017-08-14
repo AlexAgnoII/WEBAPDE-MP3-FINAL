@@ -32,3 +32,23 @@
                  endingTop: '0%',
              });
             
+             $('#uploadmodal').modal({
+                 dismissible: true, 
+                 opacity: 0.85,
+                 startTop: '4%',
+                 endingTop: '10%',
+             });
+
+              $('#sharepicmodal').modal({
+                 dismissible: true, 
+                 opacity: 0.85,
+                 startTop: '4%',
+                 endingTop: '10%',
+             });
+
+              $('#addtagmodal').modal({
+                 dismissible: true, 
+                 opacity: 0.85,
+                 startTop: '4%',
+                 endingTop: '10%',
+             });
