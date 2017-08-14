@@ -67,10 +67,29 @@
               </div>
         </div>
     
-    
+    <!-- modal div for pics -->
+    	<div id="picmodal" class="modal">
+            <div class="pwrapper">
+                    <img src="img/public/1.jpg" class="imgmodal">
+                </div>
+                
+                <div class="iwrapper">
+                    <p class="uname">not_admin</p><br><br>
+                    <li style="list-style-type:none"><div class="divider"></div></li>
+                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                </div>
+                
+                <div class="iwrapperbottom">
+                  
+                </div>
+         </div> 
+    	<!-- end of modal div -->
         
         <div id="feed">
-            <img src="img/public/1.jpg" class="img">
+        	<a class="modal-trigger" href="#picmodal" id="imgwrapper">
+        	<img src="img/public/1.jpg" class="img"></a> 
+
             <img src="img/public/2.jpg" class="img">
             <img src="img/public/3.jpg" class="img">
             <img src="img/public/4.jpg" class="img">

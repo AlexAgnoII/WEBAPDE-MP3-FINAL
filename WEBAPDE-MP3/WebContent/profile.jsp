@@ -76,7 +76,8 @@
                 <div class="iwrapper">
                     <p class="uname">admin_</p><br><br>
                     <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                 </div>
                 
                 <div class="iwrapperbottom">
