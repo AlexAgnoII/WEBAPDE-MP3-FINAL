@@ -34,7 +34,6 @@
                 <p>Select file</p>
                 <form method="post" action="upload" id="uploadPic">
                 <input type="file" id= "uploadb" name="pic" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus">
-                Uploaded by: <input type="text" name = "uploader"><br>
                 Title: <input type = "text" name ="title"><br>
                 Description: <input type = "text" name = "description"><br>
                 Privacy: <input type = "text" name = "privacy"> <br>

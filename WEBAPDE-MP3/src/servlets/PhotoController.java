@@ -80,7 +80,7 @@ public class PhotoController extends HttpServlet {
 	
 	public void addPhoto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Photo p = new Photo();
-		p.setUser_username(request.getParameter("uploader"));
+		p.setUser_username(request.getSession().getAttribute("un").toString());
 		p.setPhoto_title(request.getParameter("title"));
 		p.setPhoto_description(request.getParameter("description"));
 		p.setPhoto_url(request.getParameter("pic"));
