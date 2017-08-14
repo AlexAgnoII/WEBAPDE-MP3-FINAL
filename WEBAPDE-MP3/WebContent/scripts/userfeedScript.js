@@ -18,15 +18,16 @@
                   document.getElementById(divName).appendChild(newdiv);
                   counter++;    
             }
-             
-             function showTagDiv () {
-                 console.log("clicked");
-                 $("#tagdiv").fadeIn();
-             }
             
              $(document).ready(function() {             
 	 	        //Submit form once image if clicked.
 	 	        $("a#searchbmodal").click(function() {
 	 	        	$("form#searchBar").submit();
 	 	        });
+             });
+             
+             $('.modal').modal({
+                 dismissible: true, 
+                 opacity: 0.7,
+                 endingTop: '0%',
              });

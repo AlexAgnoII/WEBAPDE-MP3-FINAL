@@ -114,6 +114,8 @@ public class Authenticate implements Filter {
 				}
 				
 				 break;
+			case "/searchResult.jsp": chain.doFilter(request, response); break;
+			default: System.out.println("Path not found");
 		}
 		System.out.println("---------------------------\n\n");
 	}

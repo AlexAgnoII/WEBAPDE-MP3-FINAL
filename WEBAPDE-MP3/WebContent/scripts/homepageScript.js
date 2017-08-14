@@ -1,8 +1,5 @@
 
-    	function showLogin() {
-        	$("#logindiv").slideToggle();
-    	}
-    	
+ 
         $("document").ready(function() {
             $(function () {
                 $(".img").slice(0, 6).show();
