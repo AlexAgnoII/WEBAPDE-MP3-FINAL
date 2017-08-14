@@ -23,9 +23,10 @@
                  console.log("clicked");
                  $("#tagdiv").fadeIn();
              }
-             
- 	        //Submit form once image if clicked.
- 	        $("a#search").click(function() {
- 	        	$("form#searchBar").submit();
- 	        });
-    
+            
+             $(document).ready(function() {             
+	 	        //Submit form once image if clicked.
+	 	        $("a#searchbmodal").click(function() {
+	 	        	$("form#searchBar").submit();
+	 	        });
+             });
