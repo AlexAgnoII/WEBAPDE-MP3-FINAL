@@ -37,7 +37,9 @@
          <div id="searchmodal" class="modal">
             <div class="modal-content">
                 <a id="searchbmodal"><i class="material-icons" id="magglassmodal">search</i></a>
-                <form method="get" action="photoSearch" id="searchBar"><input type="text" id="searchbox" name="search"></form>
+                <form method="get" action="photoSearch" id="searchBar">
+                <input type="text" id="searchbox" name="search"></form>
+                
                 
             </div>
          </div> 
