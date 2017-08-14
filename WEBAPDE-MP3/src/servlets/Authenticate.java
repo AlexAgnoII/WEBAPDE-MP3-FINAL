@@ -2,6 +2,7 @@ package servlets;
 
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -12,6 +13,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import service.CookieDecoder;
 
 /**
  * Servlet Filter implementation class Authenticate
@@ -44,6 +48,15 @@ public class Authenticate implements Filter {
 		res = (HttpServletResponse) response;
 		proceed = false; //Fixed infinite redirection
 		String url = req.getServletPath();
+		String temp;
+		HttpSession theSession;
+		CookieDecoder theCookieDecoder = new CookieDecoder();
+		
+		System.out.println("\n\n--AUTHENTICATE SERVLET--");
+		
+		//check if session attribute exists
+		theSession = req.getSession();
+		System.out.println("Session attribute(un): " + theSession.getAttribute("un"));
 		
 		//Check if the cookie "USER" exists.
 		Cookie[] cookieList = req.getCookies();
@@ -55,7 +68,16 @@ public class Authenticate implements Filter {
 						
 					if(aCookie.getMaxAge() != 0)
 						proceed = true; //if it exists, proceed.
-
+					
+					//Allows session attribute to stay in the website
+					//When user enters exact url.
+					if(theSession.getAttribute("un") == null) {
+						theCookieDecoder.decode(aCookie.getValue());
+						temp = theCookieDecoder.getValue();
+						System.out.println("(Authenticate) Cookie value: " + temp);
+						theSession.setAttribute("un",temp);
+					}
+					
 				}
 			}
 		}
