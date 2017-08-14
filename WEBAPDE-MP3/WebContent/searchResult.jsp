@@ -61,14 +61,7 @@
 			<h1 id="notFound">No photo found.</h1>
 		</c:if>
 		
-		<script>
-			$(document).ready(function() {
-				 //Submit form once image if clicked.
-		        $("a#search").click(function() {
-		        	$("form#searchBar").submit();
-		        });
-			});
-			
+		<script src="scripts/searchResultScript.js">
 		</script>
 	</div>   
 </body>
