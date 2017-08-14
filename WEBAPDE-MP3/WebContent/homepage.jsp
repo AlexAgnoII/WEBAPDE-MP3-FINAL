@@ -40,9 +40,8 @@
       </div> 
         
         <div id="navbar">
-            <div id="tbox">
-                <p id="title"> this.<br>pic </p>
-            </div>
+        	<a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
+            <p id="title"> this.<br>pic</p></a>
             
             <a class="modal-trigger" href="#searchmodal" id="searchb"><i class="material-icons" id="magglass">search</i></a>
             

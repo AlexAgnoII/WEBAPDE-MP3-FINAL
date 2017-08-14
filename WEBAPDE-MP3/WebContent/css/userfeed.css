@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700');
 
+html {
+    font-family: "Poppins";
+}
+
 #top, #bottom, #left, #right {
 	background: #100077;
 	position: fixed;
@@ -34,25 +38,67 @@
 
 #tbox {
     background-color: #100077;
-    width: 85px;
-    height: 87px;
+    width: 83px;
+    height: 85px;
     margin-top: 25px;
     margin-left: 0px;
     position: absolute;
+    border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+    border-radius: 0px;
     border-bottom-right-radius: 2px;
     border-top-right-radius: 2px;
     box-shadow: 0 5px 5px -5px #333;
 }
 
+#tbox:hover {
+	background-color: white;
+	border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+}
+
+#tbox:hover #title {
+	color: #100077;
+}
+
 #title {
     font-family: "Poppins";
     font-size: 35px;
-    line-height: 95%;
+    line-height: 90%;
     color: white;
-    margin-left: 8px;
-    margin-top: 8px;   
+    margin-left: -25px;
+    margin-top: 7px;  
+    font-weight: 500; 
+    letter-spacing: -1px;
 }
 
+#menu {
+	margin-top: 108px;
+	background-color: #100077;
+	border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+	border-top: 0px;
+	text-align: center;
+
+}
+
+#menu a {
+	color: white;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+#menu a:hover {
+	color: #100077;;
+	font-size: 13px;
+	font-weight: 500;
+}
 
 #magglass {
     color: white;
@@ -107,7 +153,7 @@
     position: relative;
     margin: 0 auto;
     width: 45%;
-    top: 20px;
+    top: 75px;
     text-align: center;
     
 }
@@ -211,8 +257,6 @@
 	justify-content: center;
 	transition: all 500ms ease-in-out;
     box-shadow: 0 5px 5px -5px #333;
-    
-
 }
 
 #showb:hover {
@@ -265,4 +309,8 @@
 
 a#searchbmodal:hover{
 	cursor:pointer;
+}
+
+p{
+    text-transform: none;
 }

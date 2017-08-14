@@ -43,34 +43,22 @@
          </div> 
         
         <div id="navbar">
-            <div id="tbox">
-                <p id="title"> this.<br>pic </p>
-            </div>
+                <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
+                <p id="title"> this.<br>pic</p></a>
+                
+                 <ul id="menu" class='dropdown-content'>
+                  <li><a href="userfeed.jsp">home</a></li>
+                  <li><a href="profile.jsp">profile</a></li>
+                  <li><a href="logout">logout</a></li>
+                   <!-- Redirects to logout servlet. -->
+              </ul>
             
               <a class="modal-trigger" href="#searchmodal" id="searchb"><i class="material-icons" id="magglass">search</i></a>
             
             <a href="logout" id="logoutb">LOGOUT</a> 
             
         </div>
-    
-    
- 	    <div id="header">
-              <a class="dropdown-button btn" href='#' data-activates="menu" id="dropmenu"> <i class="material-icons" id="icon">menu</i></a>
-
-              <!-- menu contents -->
-              <ul id="menu" class='dropdown-content'>
-              	  
-                  <li><a href="userfeed.jsp">home</a></li>
-                  <li><a href="profile.jsp">profile</a></li>
-                  <li><a href="logout">logout</a></li>
-                   <!-- Redirects to logout servlet. -->
-              </ul>
-
-              
-            <a id="search"><i class="material-icons" id="magglass">search</i></a>
-            <form method="get" action="photoSearch" id="searchBar"><input type="text" id="searchbox" name="search"></form>
-        </div> 
-        
+   
         <!-- This is a test, you can use this for showing attributes from the session. -->
 			<!-- Username: ${sessionScope.un} <br> -->
           

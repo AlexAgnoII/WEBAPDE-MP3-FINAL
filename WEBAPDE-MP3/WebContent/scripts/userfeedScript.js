@@ -31,3 +31,4 @@
                  opacity: 0.7,
                  endingTop: '0%',
              });
+            
