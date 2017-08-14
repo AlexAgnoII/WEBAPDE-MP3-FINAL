@@ -79,6 +79,25 @@ public class PhotoController extends HttpServlet {
 	}
 	
 	public void addPhoto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Uploaded by: " + request.getSession().getAttribute("un").toString());
+		System.out.println("Title: " + request.getParameter("title"));
+		System.out.println("Description: " + request.getParameter("description"));
+		System.out.println("URL:" + request.getParameter("pic"));
+		System.out.println("Privacy: " + request.getParameter("privacy"));
+		System.out.println("Tags: " + request.getParameter("tags"));
+		
+		String tagNames[] = TagService.split(request.getParameter("tags"));
+		ArrayList<Tag> tagObjects = new ArrayList<Tag>();
+		for(String t: tagNames) {
+			TagService.checkTag(t);
+			tagObjects.add(TagService.queryTag(t));
+		}
+		System.out.println("tagObjects contains ");
+		for(Tag t: tagObjects) {
+			System.out.println("Tag id: " + t.getTag_id());
+			System.out.println("Tag name: " + t.getTag_name());
+		}
+		
 		Photo p = new Photo();
 		p.setUser_username(request.getSession().getAttribute("un").toString());
 		p.setPhoto_title(request.getParameter("title"));
@@ -87,24 +106,20 @@ public class PhotoController extends HttpServlet {
 		p.setPhoto_privacy(request.getParameter("privacy"));
 		
 		PhotoService.addPhoto(p);
-		
-		String tagNames[] = TagService.split(request.getParameter("tags"));
-		ArrayList<Tag> tagObjects = new ArrayList<Tag>();
-		for(String t: tagNames)
-			tagObjects.add(TagService.checkTag(t));
-		
+	
 		//add Tag Photo Relation
 		Tag_Photo_Relation tpr = new Tag_Photo_Relation();
 		tpr.setPhoto_id(p.getPhoto_id());
 		for(Tag t: tagObjects) {
 			tpr.setTag_id(t.getTag_id());
 			TagPhotoService.addTagPhotoRelation(tpr);
+			System.out.println("photo id: " + tpr.getPhoto_id() + " tag id " + t.getTag_id() + "name " + t.getTag_name());
 		}
 		//if private, map shared photos
 		
 		//message once it's done
 		System.out.println("Photo added!");
-		System.out.println(request.getParameter("pic"));
+		//System.out.println(request.getParameter("pic"));
 		System.out.println("I added photos.");
 
 		response.sendRedirect("profile.jsp");
