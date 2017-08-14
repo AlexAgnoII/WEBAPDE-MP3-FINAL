@@ -33,8 +33,7 @@
             $('.modal').modal({
                 dismissible: true, 
                 opacity: 0.7,
-                startingTop: '20%',
-                endingTop: '30%',
+                endingTop: '0%',
             });
           });
 
@@ -48,16 +47,23 @@
 		<div id="right"></div>
 		<div id="top"></div>
 		<div id="bottom"></div>
-       
+        
+        <div id="searchmodal" class="modal">
+            <div class="modal-content">
+                <a id="searchbmodal"><i class="material-icons" id="magglassmodal">search</i></a>
+                <form method="get" action="photoSearch" id="searchBar"><input type="text" id="searchbox" name="search"></form>
+                
+            </div>
+      </div> 
+        
         <div id="navbar">
             <div id="tbox">
                 <p id="title"> this.<br>pic </p>
             </div>
             
-            <a id="search"><i class="material-icons" id="magglass">search</i></a>
-            <form method="get" action="photoSearch" id="searchBar"><input type="text" id="searchbox" name="search"></form>
+            <a class="modal-trigger" href="#searchmodal" id="searchb"><i class="material-icons" id="magglass">search</i></a>
             
-            <a class="modal-trigger" href="#logindiv" id="loginb">LOGIN</a> 
+            <a class="modal-trigger" href="#loginmodal" id="loginb">LOGIN</a> 
             
         </div>
         
@@ -78,6 +84,7 @@
                 </form>
               </div>
         </div>
+    
     
         
         <div id="feed">
@@ -101,7 +108,7 @@
         </div>
         
         
-      <div id="logindiv" class="modal">
+      <div id="loginmodal" class="modal">
         <div class="modal-content">
             <form action="login" method="POST">
 	            <p id="usernamet">/username</p>
@@ -175,7 +182,7 @@
             })
 
             //Submit form once image if clicked.
-            $("a#search").click(function() {
+            $("a#searchbmodal").click(function() {
                 $("form#searchBar").submit();
             });
         });
