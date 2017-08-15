@@ -219,7 +219,7 @@ p{
 }
 
 #searchmodal {
-    position: absolute;
+    position: fixed;
     height: 53px;
     right: 8px;
     width: 100%;
@@ -304,7 +304,7 @@ a#searchbmodal:hover{
 }
 
 #picmodal {
-	position: absolute;
+	position: fixed;
     margin: 10 auto;
     width: 42%;
     height: 62%;
@@ -382,7 +382,7 @@ a#searchbmodal:hover{
     box-shadow: 0 5px 5px -5px #333;
 }
 
-#logos {
+.logos {/*from id to class*/
     font-size: 25px;
     color: white;
 }

@@ -240,7 +240,7 @@ html {
     text-align: center;
 }
 
-.img, #imgwrapper {
+.img, .imgwrapper {
     height: 45%;;
     margin: 10px; 
    
@@ -251,7 +251,7 @@ html {
 }
 
 #loginmodal {
-    position: absolute;
+    position: fixed; /*from absolute to fixed.*/
     right: 8px;
     top: 55px;
     width: 310px;
@@ -290,7 +290,7 @@ html {
 }
 
 #searchmodal {
-    position: absolute;
+    position: fixed; /*From fix to absolute*/
     height: 53px;
     right: 8px;
     top: 55px;
@@ -397,11 +397,11 @@ p{
     text-transform: none;
 }
 
-#picmodal {
-	position: absolute;
+.picmodal { /*From ID to class*/
+	position: fixed; /*from absolute to fixed.*/
     margin: 10 auto;
     width: 42%;
-    height: 62%;
+    /*height: 62%;*/ /*commenting this out removes the excess space below the pic modal*/
     top: 52px;
     text-align: left;
     border-radius: 3.5px;
@@ -418,7 +418,7 @@ p{
     box-shadow: 0 5px 5px -5px #333;
 }
 
-.iwrapper {
+.iwrapper { /*From id to class*/
     background-color: #fcfcfc;
     width: 35%;
     height: 365px;
@@ -432,7 +432,7 @@ p{
     border-bottom-right-radius: 0px;
 }
 
-.imgmodal {
+.imgmodal { 
 	height: 100%;
     margin: 0 auto;  
 }

@@ -94,8 +94,16 @@ public class Authenticate implements Filter {
 					}
 					
 					else {
-						System.out.println("Continue to its page..");
-						chain.doFilter(request, response);
+						if(!url.equals("/homepage.jsp")) {
+							System.out.println("Continue to its page..");
+							chain.doFilter(request, response);
+						}
+						
+						else {
+							System.out.println("homepage.jsp, proceeding to showPublic...");
+							req.getRequestDispatcher("showPublic").forward(req, res);
+						}
+						
 					}
 					
 				 break;
@@ -104,8 +112,22 @@ public class Authenticate implements Filter {
 			case "/profile.jsp":	
 			case "/upload.jsp":
 				if(proceed) { //forward to the its page. 
-					System.out.println("proceed to its page.");
-					chain.doFilter(request, response);
+					
+					if(url.equals("/userfeed.jsp")) {
+						System.out.println("userfeed.jsp, proceeding to showUserFeedPhotos...");
+						req.getRequestDispatcher("showUserFeedPhotos").forward(req, res);
+					}
+					
+					else if(url.equals("/profile.jsp")) {
+						System.out.println("profile.jsp, proceeding to showUserPhotos...");
+						req.getRequestDispatcher("showUserPhotos").forward(req, res);
+					}
+					
+					else {
+						System.out.println("proceed to its page.");
+						chain.doFilter(request, response);
+					}
+
 					
 				}
 				else {

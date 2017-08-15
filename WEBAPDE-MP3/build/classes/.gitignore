@@ -1,3 +1,4 @@
-/service/
 /servlets/
+/META-INF/
 /bean/
+/service/

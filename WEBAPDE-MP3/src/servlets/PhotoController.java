@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,9 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.User;
+
 import bean.Photo;
 import bean.Tag;
 import bean.Tag_Photo_Relation;
+import bean.Users;
 import service.PhotoService;
 import service.TagPhotoService;
 import service.TagService;
@@ -19,7 +23,7 @@ import service.TagService;
 /**
  * Servlet implementation class PhotoController
  */
-@WebServlet(urlPatterns= {"/upload", "/photoSearch"})
+@WebServlet(urlPatterns= {"/upload", "/photoSearch", "/showPublic", "/showUserFeedPhotos", "/showUserPhotos"})
 public class PhotoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,6 +46,10 @@ public class PhotoController extends HttpServlet {
 		switch(urlpattern) {
 			case "/photoSearch": filterByTag(request, response);
 				                 break;
+			case "/showPublic": showPublicPhotos(request, response); break;
+			case "/showUserFeedPhotos": showUserFeedPhotos(request, response); break;
+			case "/showUserPhotos": showUserPhotos(request, response); break;
+			default: System.out.println("PATH DOES NOT EXIST ( PHOTO CONTROLLER ) ");
 		}
 	}
 
@@ -57,6 +65,84 @@ public class PhotoController extends HttpServlet {
 		case"/upload": addPhoto(request, response);
 								break;
 		}
+	}
+	//show pics that are only for that user.
+	private void showUserPhotos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		List<Photo> photoList;
+		Users theUser = new Users();
+		theUser.setUsers_username("testing");
+		theUser.setUsers_description("Testing purposes");
+		
+		//get all photos of user
+		photoList = PhotoService.getPublicPhotos(); //replace this with new function 
+		
+		//get the user itself
+		System.out.println(request.getSession().getAttribute("un"));
+		if(photoList != null) {
+			//display all photos (for testing)
+			System.out.println("Photos here: ");
+			for(int i = 0; i < photoList.size(); i++) {
+				System.out.print("Photo#" + (i+1) + ": " + photoList.get(i).getPhoto_title());
+				System.out.println("URL: "  + photoList.get(i).getPhoto_url());
+				
+			}
+		}
+		
+		System.out.println("Forwarding to profile.jsp..");
+		System.out.println("hakuna matataa");
+		request.setAttribute("photoList", photoList);
+		request.setAttribute("user", theUser);
+		
+		request.getRequestDispatcher("profile.jsp").forward(request, response);
+	}
+	
+	//Shows pics that are shared, public and private.
+	private void showUserFeedPhotos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+				List<Photo> photoList;
+				
+				//get all public photos
+				photoList = PhotoService.getPublicPhotos(); //replace this with new function 
+				
+				if(photoList != null) {
+					//display all photos (for testing)
+					System.out.println("Photos here: ");
+					for(int i = 0; i < photoList.size(); i++) {
+						System.out.print("Photo#" + (i+1) + ": " + photoList.get(i).getPhoto_title());
+						System.out.println("URL: "  + photoList.get(i).getPhoto_url());
+						
+					}
+				}
+				
+				System.out.println("Forwarding to userfeed.jsp..");
+				System.out.println("testing");
+				request.setAttribute("photoList", photoList);
+				request.getRequestDispatcher("userfeed.jsp").forward(request, response);
+	}
+	
+	//shows public only.
+	private void showPublicPhotos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		List<Photo> photoList;
+		
+		//get all public photos
+		photoList = PhotoService.getPublicPhotos();
+		
+		if(photoList != null) {
+			//display all photos (for testing)
+			System.out.println("Photos here: ");
+			for(int i = 0; i < photoList.size(); i++) {
+				System.out.print("Photo#" + (i+1) + ": " + photoList.get(i).getPhoto_title());
+				System.out.println("URL: "  + photoList.get(i).getPhoto_url());
+				
+			}
+		}
+		
+		System.out.println("Forwarding to hompage.jsp..");
+		request.setAttribute("photoList", photoList);
+		request.getRequestDispatcher("homepage.jsp").forward(request, response);
+
 	}
 	
 	public void filterByTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

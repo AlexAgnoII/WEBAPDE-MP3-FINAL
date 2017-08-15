@@ -270,7 +270,7 @@ html {
 }
 
 #searchmodal {
-    position: absolute;
+    position: fixed; /*from abs to fixed*/
     height: 53px;
     right: 8px;
     width: 100%;
@@ -316,7 +316,7 @@ p{
 }
 
 #uploadmodal, #sharepicmodal, #addtagmodal {
-    position: absolute;
+    position: fixed; /*from absolute to fixed*/
     margin: 10 auto;
     width: 42%;
     height: 63%;

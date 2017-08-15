@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -54,7 +55,6 @@
         
          <div id="addtagmodal" class="modal">
         		ADD TAG STUFF GOES HERE
-        
          </div> 
         
         <div id="navbar">
@@ -79,188 +79,37 @@
           
     
         <div id="feed">
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/private/1.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">admin_</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                      <a class="modal-trigger" href="#sharepicmodal" id="sharepicb"><i class="material-icons" id="logos">supervisor_account</i></a>
-                    
-                    <a class="modal-trigger" href="#addtagmodal" id="addtagb"><i class="material-icons" id="logos">add_location</i></a>
-                </div>
-            </div>
-       	
-       	<div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/public/1.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
+        	<c:if test = "${not empty photoList}">
+        		<c:forEach items="${photoList}" var="p">
+		            <div class ="fwrapper">
+		                <div class="pwrapper">
+		                    <img src="${p.photo_url}" class="img">
+		                </div>
+		                
+		                <div class="iwrapper">
+		                    <p class="uname">${p.user_username}</p><br><br>
+		                    <li style="list-style-type:none"><div class="divider"></div></li>
+		                    <p class="cap">${p.photo_description}</p>
+		                </div>
+		                
+		                <div class="iwrapperbottom">
+		                      <a class="modal-trigger sharepicb" href="#sharepicmodal" > <!-- switched sharepicb from ID to Class -->
+		                      	<i class="material-icons" id="logos">supervisor_account</i>
+		                      </a>
+		                      
+		                      <a class="modal-trigger addtagb" href="#addtagmodal" > <!-- switched addtagb from ID to Class -->
+		                      	<i class="material-icons" id="logos">add_location</i>
+		                      </a>
+		                </div>
+		            </div>
+	            </c:forEach>
+	           <a href="#" id="showb">show more</a>
+           </c:if>
+           
+           <c:if test = "${empty photoList}">
+              No photos at the moment.
+           </c:if>
             
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/private/2.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">admin_</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
-            
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/public/2.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
-            
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/private/3.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">admin_</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
-            
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/public/3.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
-            
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/private/4.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">admin_</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
-            
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/public/4.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
-            
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/private/5.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">admin_</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
-            
-            <div class ="fwrapper">
-                <div class="pwrapper">
-                    <img src="img/public/5.jpg" class="img">
-                </div>
-                
-                <div class="iwrapper">
-                    <p class="uname">not_admin</p><br><br>
-                    <li style="list-style-type:none"><div class="divider"></div></li>
-                    <p class="cap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                </div>
-                
-                <div class="iwrapperbottom">
-                    <i class="material-icons" id="logos">supervisor_account</i>
-                    
-                    <i class="material-icons" id="logos">add_location</i>
-                </div>
-            </div>
-            
-
-           <a href="#" id="showb">show more</a>
             
         </div>
  
