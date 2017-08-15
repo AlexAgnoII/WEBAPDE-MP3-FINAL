@@ -37,6 +37,7 @@
                 Title: <input type = "text" name ="title"><br>
                 Description: <input type = "text" name = "description"><br>
                 Privacy: <input type = "text" name = "privacy"> <br>
+                Share to<input type = "text" name = "share"><br>
                 Tags: <input type = "text" name = "tags"><br>
                 </form>
                 

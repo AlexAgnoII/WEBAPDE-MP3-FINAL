@@ -13,6 +13,80 @@ import bean.Photo;
 
 public class PhotoService {
 	
+	public static List<Photo> getUserFeed(String username){
+		List<Photo> photoList = null;
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+		
+		try {
+			TypedQuery<Photo> query = em.createQuery("SELECT photo From photo photo, users users, " + 
+													 "shared_photos shared_photos " + 
+													 "WHERE( " +
+													 "photo.photo_privacy = ?1 " + 
+													 "AND shared_photos.shared_user_username = users.users_username " + 
+													 "AND shared_photos.shared_user_username = ?2) " +
+													 "AND shared_photos.photo_id = photo.photo_id " +
+													 "OR( " +
+													 "photo.photo_privacy = ?1 " + 
+													 "AND photo.user_username = ?2) " +
+													 "OR ( photo.photo_privacy = ?3) " +
+													 "GROUP BY photo.photo_id " +
+													 "ORDER BY photo.photo_privacy", Photo.class);
+			query.setParameter(1, "private");
+			query.setParameter(2, username);
+			query.setParameter(3, "public");
+			photoList = query.getResultList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			em.close();
+		}
+		return photoList;
+	}
+	
+	public static List<Photo> getUserPhotos(String username){
+		List<Photo> photoList = null;
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+
+		try {
+			TypedQuery<Photo> query = em.createQuery("SELECT photo FROM photo photo WHERE user_username = ?1 " +
+													 "ORDER BY photo_uploadDate", Photo.class);
+			query.setParameter(1, username);
+			photoList = query.getResultList();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			em.close();
+		}
+		return photoList;
+	}
+	
+	public static List<Photo> filterByTag(String tag){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		
+		EntityManager em = emf.createEntityManager();
+		
+		List<Photo> photoList = null;
+		try {
+			TypedQuery<Photo> query = em.createQuery("SELECT photo FROM photo photo, " +
+													 "tag tag, tag_photo_relation tag_photo_relation " + 
+													 "WHERE photo.photo_id = tag_photo_relation.photo_id " +
+													 "AND tag.tag_id = tag_photo_relation.tag_id AND tag.tag_name = ?1 " +
+													 "ORDER BY photo_uploadDate", Photo.class);
+			query.setParameter(1, tag);
+			photoList = query.getResultList();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			em.close();
+		}
+		return photoList;
+	}
+	
 	public static List<Photo> getPublicPhotos() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
 		

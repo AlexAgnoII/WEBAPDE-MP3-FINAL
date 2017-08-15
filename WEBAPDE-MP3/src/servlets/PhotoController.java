@@ -66,6 +66,7 @@ public class PhotoController extends HttpServlet {
 								break;
 		}
 	}
+	
 	//show pics that are only for that user.
 	private void showUserPhotos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -73,9 +74,9 @@ public class PhotoController extends HttpServlet {
 		Users theUser = new Users();
 		theUser.setUsers_username("testing");
 		theUser.setUsers_description("Testing purposes");
-		
+		String username = request.getSession().getAttribute("un").toString();
 		//get all photos of user
-		photoList = PhotoService.getPublicPhotos(); //replace this with new function 
+		photoList = PhotoService.getUserPhotos(username); //replace this with new function 
 		
 		//get the user itself
 		System.out.println(request.getSession().getAttribute("un"));
@@ -101,9 +102,9 @@ public class PhotoController extends HttpServlet {
 	private void showUserFeedPhotos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 				List<Photo> photoList;
-				
+				String username = request.getSession().getAttribute("un").toString();
 				//get all public photos
-				photoList = PhotoService.getPublicPhotos(); //replace this with new function 
+				photoList = PhotoService.getUserFeed(username); //replace this with new function 
 				
 				if(photoList != null) {
 					//display all photos (for testing)
@@ -146,6 +147,13 @@ public class PhotoController extends HttpServlet {
 	}
 	
 	public void filterByTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		List<Photo> photoList;
+		
+		photoList = PhotoService.filterByTag(request.getParameter("search"));
+		
+		for(Photo p: photoList) {
+			System.out.println(p.toString());
+		}
 //		PhotoService ps = new PhotoService();
 //		ArrayList<Photo> test = new ArrayList<Photo>();
 //		System.out.println(request.getParameter("search"));

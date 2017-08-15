@@ -83,9 +83,7 @@ public class Photo {
 
 	@Override
 	public String toString() {
-		return "Photo [photo_id=" + photo_id + ", user_username=" + user_username + ", photo_title=" + photo_title
-				+ ", photo_description=" + photo_description + ", photo_uploadDate=" + photo_uploadDate + ", photo_url="
-				+ photo_url + ", photo_privacy=" + photo_privacy + "]";
+		return "Photo id: " + photo_id + " Privacy: " + photo_privacy + " Uploaded by: " + user_username;
 	}
 
 }

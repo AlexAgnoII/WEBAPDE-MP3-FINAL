@@ -85,12 +85,21 @@ public class TagService {
 		}
 	}
 	
-	public static void main(String[] args) {
-		String tags[] = TagService.split("outdoors, games, family, school, travel, computer science, c");
-		System.out.println("tags contains: ");
-		for(String t: tags) {
-			System.out.println(t);
-			//TagService.checkTag(t);
+	public static List<Tag> getPhotoTag(int photoId) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+		List<Tag> returnTags = null;
+		try {
+			TypedQuery<Tag> query = em.createQuery("SELECT tag FROM tag tag, tag_photo_relation tag_photo_relation " + 
+												   "WHERE tag.tag_id = tag_photo_relation.tag_id " + 
+												   "AND tag_photo_relation.photo_id = ?1", Tag.class);
+			query.setParameter(1, photoId);
+			returnTags = query.getResultList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			em.close();
 		}
+		return returnTags;
 	}
 }
