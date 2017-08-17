@@ -58,13 +58,7 @@
 	            	 var username = $(this).attr("data-userName");
 	            	 console.log("Clicked: " + username);
 	            	 
-	            	 $.ajax({
-	 					"url" : "visitThisUser",
-	 					"method" : "GET", 
-	 					"data" : {
-	 						"clickedUsername" : username
-	 					}
-	 				});
+	            	 window.location = "visitThisUser?user=" + username;
 	              });
 	          
              });

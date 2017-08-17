@@ -55,11 +55,36 @@ public class PhotoController extends HttpServlet {
 		}
 	}
 
-	private void showUserVisitedPhotos(HttpServletRequest request, HttpServletResponse response) {
-		String userToVisit = request.getParameter("clickedUsername");
+	private void showUserVisitedPhotos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userToVisit = request.getParameter("user");
+		String currentUser = request.getSession().getAttribute("un").toString();
 		System.out.println("User to visit: " + userToVisit);
-		System.out.println("Current user: " + request.getSession().getAttribute("un"));
+		System.out.println("Current user: " + currentUser);
 		
+		List<Photo> photoList;
+		Users theUser = new Users();
+		theUser.setUsers_username("testing");
+		theUser.setUsers_description("Testing purposes");
+
+		//get all photos of user
+		photoList = PhotoService.getUserPhotos(currentUser, userToVisit); //replace this with new function 
+		
+		if(photoList != null) {
+			//display all photos (for testing)
+			System.out.println("Photos here: ");
+			for(int i = 0; i < photoList.size(); i++) {
+				System.out.print("Photo#" + (i+1) + ": " + photoList.get(i).getPhoto_title());
+				System.out.println("URL: "  + photoList.get(i).getPhoto_url());
+				
+			}
+		}
+		
+		System.out.println("Forwarding to profile.jsp..");
+		System.out.println("View specific user");
+		request.setAttribute("photoList", photoList);
+		request.setAttribute("user", theUser);
+		
+		request.getRequestDispatcher("profile.jsp").forward(request, response);
 	}
 
 	/**
