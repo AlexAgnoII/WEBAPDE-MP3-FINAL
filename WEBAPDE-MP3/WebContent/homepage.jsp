@@ -52,6 +52,7 @@
         
         <div id = "signupdiv">
             <div id=signupwrapper>
+            	<h1>sign up now!</h1>
                 <form method="POST" action="register"> 
                     <p id="usernamet">/username</p><input type="text" id="username" name="username"> <br>
                    
