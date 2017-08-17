@@ -87,7 +87,7 @@
 		                </div>
 		                
 		                <div class="iwrapper">
-		                    <p class="uname">${p.user_username}</p><br><br>
+		                    <p class="uname">${p.photo_title}</p><br><br>
 		                    <li style="list-style-type:none"><div class="divider"></div></li>
 		                    <p class="cap">${p.photo_description}</p>
 		                </div>

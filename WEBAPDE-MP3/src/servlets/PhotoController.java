@@ -23,7 +23,7 @@ import service.TagService;
 /**
  * Servlet implementation class PhotoController
  */
-@WebServlet(urlPatterns= {"/upload", "/photoSearch", "/showPublic", "/showUserFeedPhotos", "/showUserPhotos"})
+@WebServlet(urlPatterns= {"/upload", "/photoSearch", "/showPublic", "/showUserFeedPhotos", "/showUserPhotos", "/visitThisUser"})
 public class PhotoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -50,8 +50,16 @@ public class PhotoController extends HttpServlet {
 			case "/showPublic": showPublicPhotos(request, response); break;
 			case "/showUserFeedPhotos": showUserFeedPhotos(request, response); break;
 			case "/showUserPhotos": showUserPhotos(request, response); break;
+			case "/visitThisUser": showUserVisitedPhotos(request, response); break;
 			default: System.out.println("PATH DOES NOT EXIST ( PHOTO CONTROLLER ) ");
 		}
+	}
+
+	private void showUserVisitedPhotos(HttpServletRequest request, HttpServletResponse response) {
+		String userToVisit = request.getParameter("clickedUsername");
+		System.out.println("User to visit: " + userToVisit);
+		System.out.println("Current user: " + request.getSession().getAttribute("un"));
+		
 	}
 
 	/**

@@ -87,7 +87,17 @@
 		                </div>
 		                
 		                <div class="iwrapper">
-		                    <p class="uname">${p.user_username}</p><br><br>
+		                    <p class="uname"> 
+			                    <c:if test="${sessionScope.un != p.user_username}">
+			                    	<a data-userName="${p.user_username}" class="userNameClicky">${p.user_username}</a>
+			                    </c:if>
+			                    
+			                    <c:if test="${sessionScope.un == p.user_username}">
+			                    	${p.user_username}
+			                    </c:if>
+		                    </p>
+		                    <br>
+		                    <br>
 		                    <li style="list-style-type:none"><div class="divider"></div></li>
 		                    <p class="cap">${p.photo_description}</p>
 		                </div>

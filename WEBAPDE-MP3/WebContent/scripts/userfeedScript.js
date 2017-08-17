@@ -24,31 +24,47 @@
 	 	        $("a#searchbmodal").click(function() {
 	 	        	$("form#searchBar").submit();
 	 	        });
-             });
              
-             $('.modal').modal({
-                 dismissible: true, 
-                 opacity: 0.7,
-                 endingTop: '0%',
-             });
-            
-             $('#uploadmodal').modal({
-                 dismissible: true, 
-                 opacity: 0.85,
-                 startTop: '4%',
-                 endingTop: '10%',
-             });
-
-              $('#sharepicmodal').modal({
-                 dismissible: true, 
-                 opacity: 0.85,
-                 startTop: '4%',
-                 endingTop: '10%',
-             });
-
-              $('#addtagmodal').modal({
-                 dismissible: true, 
-                 opacity: 0.85,
-                 startTop: '4%',
-                 endingTop: '10%',
+             
+	             $('.modal').modal({
+	                 dismissible: true, 
+	                 opacity: 0.7,
+	                 endingTop: '0%',
+	             });
+	            
+	             $('#uploadmodal').modal({
+	                 dismissible: true, 
+	                 opacity: 0.85,
+	                 startTop: '4%',
+	                 endingTop: '10%',
+	             });
+	
+	              $('#sharepicmodal').modal({
+	                 dismissible: true, 
+	                 opacity: 0.85,
+	                 startTop: '4%',
+	                 endingTop: '10%',
+	             });
+	
+	              $('#addtagmodal').modal({
+	                 dismissible: true, 
+	                 opacity: 0.85,
+	                 startTop: '4%',
+	                 endingTop: '10%',
+	             });
+	              
+	              //This part is for sending the username clicked by the user in userfeed.
+	              $("a.userNameClicky").click(function() {
+	            	 var username = $(this).attr("data-userName");
+	            	 console.log("Clicked: " + username);
+	            	 
+	            	 $.ajax({
+	 					"url" : "visitThisUser",
+	 					"method" : "GET", 
+	 					"data" : {
+	 						"clickedUsername" : username
+	 					}
+	 				});
+	              });
+	          
              });

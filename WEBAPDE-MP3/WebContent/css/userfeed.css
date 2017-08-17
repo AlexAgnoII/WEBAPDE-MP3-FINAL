@@ -325,3 +325,7 @@ p{
     border-radius: 3.5px;
     display: none; 
 }
+
+a.userNameClicky{
+	cursor: pointer;
+}
