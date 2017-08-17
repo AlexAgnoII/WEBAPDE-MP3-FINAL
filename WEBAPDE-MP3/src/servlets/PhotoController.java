@@ -19,6 +19,7 @@ import bean.Users;
 import service.PhotoService;
 import service.TagPhotoService;
 import service.TagService;
+import service.UserService;
 
 /**
  * Servlet implementation class PhotoController
@@ -62,9 +63,8 @@ public class PhotoController extends HttpServlet {
 		System.out.println("Current user: " + currentUser);
 		
 		List<Photo> photoList;
-		Users theUser = new Users();
-		theUser.setUsers_username("testing");
-		theUser.setUsers_description("Testing purposes");
+		Users theUser = UserService.getUser(userToVisit);
+		System.out.println("TheUser: " + theUser.getUsers_username());
 
 		//get all photos of user
 		photoList = PhotoService.getUserPhotos(currentUser, userToVisit); //replace this with new function 

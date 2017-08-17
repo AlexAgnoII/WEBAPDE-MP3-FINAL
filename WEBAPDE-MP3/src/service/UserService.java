@@ -2,11 +2,14 @@ package service;
 
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+
+import org.apache.catalina.User;
 
 import bean.Tag;
 import bean.Users;
@@ -59,5 +62,27 @@ public class UserService {
 			em.close();
 		}
 		return false;
+	}
+	
+	public static Users getUser(String username) {
+		Users s = null;
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+		
+		EntityTransaction trans = em.getTransaction();
+		
+		try{
+			trans.begin();
+			// select student with given id
+			s = em.find(Users.class, username);
+			trans.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			em.close();
+		}
+		
+		return s;
 	}
 }

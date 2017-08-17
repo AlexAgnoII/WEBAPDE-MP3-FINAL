@@ -72,7 +72,7 @@
         <div id="uwrapper">
             <img src="img/userpic.png" id="userdp">
             <div id="unamewrapper"><p id="uname">${user.users_username}</p></div>
-            <p id="userdesc">user.users_shortdescription</p>
+            <p id="userdesc">${user.users_description}</p>
       
         </div>
          
