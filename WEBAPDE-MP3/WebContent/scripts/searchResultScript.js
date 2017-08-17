@@ -1,7 +1,11 @@
-			$(document).ready(function() {
-				 //Submit form once image if clicked.
-		        $("a#search").click(function() {
-		        	$("form#searchBar").submit();
-		        });
-			});
-			
+    	$("a#searchbmodal").click(function() {
+	        	$("form#searchBar").submit();
+	        });
+	        
+	        $('.modal').modal({
+                dismissible: true, 
+                opacity: 0.7,
+                startTop: '0%',
+                endingTop: '0%',
+            });
+           

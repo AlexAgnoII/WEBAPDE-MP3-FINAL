@@ -1,146 +1,221 @@
-@import url(//fonts.googleapis.com/css?family=Vidaloka);
-@import url(//fonts.googleapis.com/css?family=Raleway:400,500,600,900);
-@import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700');
 
-body {
-     background: linear-gradient(#780206, #061161);
-    background-attachment: fixed;
+html {
+    font-family: "Poppins";
 }
 
-#header {
-    background-color: snow;
-    position: fixed;
+p{
+    text-transform: none;
+}
+
+#top, #bottom, #left, #right {
+	background: #100077;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 10px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 0px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
+
+#navbar {
+    background-color: white;
+    height: 55px;
     width: 100%;
-    height: 50px;
-    top: 0;  
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
-    z-index: 2;
+    left: 0;
+    display: inline;
+    position: fixed;
+    border-style: solid;
+    border-color: #100077;
+    border-width: 10px;
+    border-bottom: 0px;
+    z-index: 5;   
 }
 
-#searchbox {
-    width: 15%;
-    height: 23px;
-    border-radius: 4px;
-    margin-top: 10px;
-    margin-right: 5px;
-    float: right;
-    background: white;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
+#tbox {
+    background-color: #100077;
+    width: 83px;
+    height: 85px;
+    margin-top: 25px;
+    margin-left: 0px;
+    position: absolute;
+    border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+    border-radius: 0px;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#tbox:hover {
+	background-color: white;
+	border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+}
+
+#tbox:hover #title {
+	color: #100077;
+}
+
+#title {
+    font-family: "Poppins";
+    font-size: 35px;
+    line-height: 90%;
+    color: white;
+    margin-left: -25px;
+    margin-top: 7px;  
+    font-weight: 500; 
+    letter-spacing: -1px;
+}
+
+#menu {
+	margin-top: 108px;
+	background-color: #100077;
+	border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+	border-top: 0px;
+	text-align: center;
+
+}
+
+#menu a {
+	color: white;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+#menu a:hover {
+	color: #100077;;
+	font-size: 13px;
+	font-weight: 500;
 }
 
 #magglass {
-    color: black;
+    color: white;
     float: right;
-    font-size: 25px;
-    margin-top: 10px;
-    margin-right: 10px;
+    font-size: 23px;
+    display: inline;
+    background-color: #100077;
+    padding: 9px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #100077;
+    border-top: 0px;
+    border-right: 0px;
 }
 
-.picwrapper {
-    width: 40%;
-    height: 80%;
-    margin: 0 auto;
-    background-color: snow;
-    padding: 0px;
-    margin-top: 10px;
-    padding-bottom: 20px;
-    padding-top: 10px;
-    margin-bottom: 10px;
-    align-content: center;
+#magglass:hover {
+    color: #100077;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #100077;
+    border-top: 0px;
+    border-right: 0px;  
+}
+
+#logoutb {
+    background-color: #100077;
+    float: right;
+    display: inline;
+    border-width: 0px;
+    border-radius: 0px;
+    height: 42px;
+    font-family: "Poppins";
+    color: white;
+    width: 100px;  
+    font-size: 12px;
     text-align: center;
+    padding-top: 11px;
 }
 
-.pics {
-	width: 100%;
-	padding: 10px;
-	padding-top: 0px;
-	padding-bottom: 4px;
-	margin: 0 auto;
-	margin-top: 1%;
-    display: block;  
+#logoutb:hover {
+    color: #100077;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #100077;
+    border-top: 0px;
+    border-right: 0px;  
+}
+
+#notFound {
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 700;
+    color: #100077;
 }
 
 #feed {
     position: relative;
-    top: 45px;
+    top: 15%;
     text-align: center;
+   
 }
 
-.picwrapper .un {
-    font-family: "Raleway";
-    text-align: left;
-    font-size: 14px;
-    width: 70%;
-    font-weight: 600;
-    margin-bottom: 0px;
-    margin-top: 1px;
-    padding-left: 3%;
-    display: inline;
-    float: left;
-    line-height: 100%;
+#searchmodal {
+    position: absolute;
+    height: 53px;
+    right: 8px;
+    top: 55px;
+    width: 100%;
+    background-color: #100077; 
+    margin: 0 auto;
+    text-align: center;
+    z-index: 4;
+    display: none;
+    border-radius: 3px;
+    box-shadow: 0 5px 5px -5px #333;
+
 }
 
-.caption {
-    font-family: "Raleway";
-    text-align: left;
-    float: left;
-    font-size: 75%;
-    width: 95%;
-    font-weight: 400;
-    margin-top: 0px;
-    margin-bottom: 1px;
-    padding-left: 7%;
-    line-height: 100%;
-}
-
-#tags {
-    font-family: "Raleway";
-    float: left;
-    padding-left: 4%;
-    font-size: 70%;
-    margin: 0px;
-}
-
-#addtag {
+#searchbox {
+    width: 50%;
+    margin-top: -10px;
+    height: 24px; 
     float: right;
-    padding-right: 3%;
+    background: white;
+    border-style: solid;
+    border-color: #100077;
+    border-width: 1.20px;
+    border-radius: 4px;
+    font-family: "Poppins";
 }
 
-h1#notFound{
-	    font-family: "Raleway";
-	    color: snow;
+#magglassmodal {
+    color: white;
+    float: right;
+    font-size: 25px;
+    display: inline;
+    background-color: #100077;
+    padding: 9px;
+    margin-top: -18px;  
 }
 
-#header #dropmenu {
-    float: left;
-    height: 50px;
-    background: rgba(0, 0, 0, 0.9);
-    color: snow;
-    font-family: "Raleway";
-    border-radius: 0px;
-    width: 20px;
-    text-align: center;
+a#searchbmodal:hover{
+	cursor:pointer;
 }
 
-#icon {
-	margin-top: 8px;
-    left: -10px;
-    position: relative;
+#uploadmodal, #sharepicmodal, #addtagmodal {
+    position: absolute;
+    margin: 10 auto;
+    width: 42%;
+    height: 63%;
+    text-align: left;
+    border-radius: 3.5px;
+    display: none; 
 }
-
-
-#userwel {
-	font-family: "Raleway";
-	font-style: italic;
-	padding: 14px;
-	float: left;
-	margin: 0px;
-	font-weight: 500;
-}
-
-a#search{
-	cursor: pointer;
-}
-
