@@ -42,7 +42,8 @@ public class PhotoController extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String urlpattern = request.getServletPath();
-		System.out.println("PHOTOSERVLET:  " + urlpattern);
+		System.out.println("------PHOTOSERVLET:  " + urlpattern + "-------");
+		System.out.println("Session: " + request.getSession().getAttribute("un"));
 		switch(urlpattern) {
 			case "/photoSearch": filterByTag(request, response);
 				                 break;

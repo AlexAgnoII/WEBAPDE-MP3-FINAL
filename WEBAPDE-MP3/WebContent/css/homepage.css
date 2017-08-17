@@ -291,7 +291,7 @@ html {
 
 #searchmodal {
     position: fixed; /*From fix to absolute*/
-    height: 53px;
+    /*height: 53px; removed height to remove scroll bar*/
     right: 8px;
     top: 55px;
     width: 100%;

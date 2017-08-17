@@ -36,12 +36,15 @@ public class LogoutSevlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		HttpSession theSession = request.getSession();
-		
+		System.out.println("Befor-> Session: " + request.getSession().getAttribute("un"));
 		//Kill the session
 		theSession.invalidate();
-		
+		System.out.println("After-> Session: " + request.getSession().getAttribute("un"));
 		//Remove the cookies
 		Cookie[] cookieList = request.getCookies();
+		System.out.println("--Logout Servlet--");
+
+		
 		
 		//search for the cookie and kill it.
 		for (Cookie cookies : cookieList) {
@@ -59,7 +62,7 @@ public class LogoutSevlet extends HttpServlet {
 			}
 		}
 		
-		
+
 		response.sendRedirect("homepage.jsp");
 
 	}

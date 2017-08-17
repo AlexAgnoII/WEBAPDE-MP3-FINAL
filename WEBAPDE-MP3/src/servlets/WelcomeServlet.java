@@ -88,12 +88,14 @@ public class WelcomeServlet extends HttpServlet {
 		//If it exists = redirect to homepage while logged in
 		if(value != null) {
 			System.out.println("WELCOMESERVLET, User exists.");
+			System.out.println("Session: " + request.getSession().getAttribute("un"));
 			RequestDispatcher rd = request.getRequestDispatcher("showUserFeedPhotos");
 			theSession.setAttribute("un",value);
 			rd.forward(request, response);
 		}
 		else {
 			System.out.println("WELCOMESERVLET, User does not exist.");
+			System.out.println("Session: " + request.getSession().getAttribute("un"));
 			//else, redirect to  homepage
 			request.getRequestDispatcher("showPublic").forward(request, response);
 		}

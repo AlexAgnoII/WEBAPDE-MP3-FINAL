@@ -154,21 +154,6 @@ p{
     border-right: 0px;  
 }
 
-#searchbox {
-    width: 10%;
-    height: 24px; 
-    margin-top: 8px;
-    margin-right: 5px;
-    float: right;
-    background: white;
-    border-style: solid;
-    border-color: #100077;
-    border-width: 1.20px;
-    border-radius: 4px;
-    display: none;
-}
-
-
 
 #feed {
 	    position: relative;
@@ -220,7 +205,7 @@ p{
 
 #searchmodal {
     position: fixed;
-    height: 53px;
+    /*height: 53px; removed height to remove scroll bar*/
     right: 8px;
     width: 100%;
     background-color: #100077; 
@@ -386,3 +371,4 @@ a#searchbmodal:hover{
     font-size: 25px;
     color: white;
 }
+

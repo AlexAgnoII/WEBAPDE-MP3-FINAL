@@ -271,7 +271,7 @@ html {
 
 #searchmodal {
     position: fixed; /*from abs to fixed*/
-    height: 53px;
+    /*height: 53px; removed height to removve scroll bar*/
     right: 8px;
     width: 100%;
     background-color: #100077; 
@@ -281,13 +281,14 @@ html {
     display: none;
     border-radius: 3px;
     box-shadow: 0 5px 5px -5px #333;
-
+	
 }
 
 #searchbox {
+	display: inline;
     width: 50%;
-    margin-top: 0px;
-    height: 24px; 
+    height: 30px; 
+    margin-top: -13px;
     float: right;
     background: white;
     border-style: solid;
