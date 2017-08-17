@@ -43,6 +43,11 @@
             </div>
          </div> 
         
+          <div id="uploadmodal" class="modal">
+		        UPLOAD STUFF GOES HERE
+		        
+		  </div>
+        
          <div id="sharepicmodal" class="modal">
        		 	SHARE PIC  STUFF GOES HERE
         
@@ -59,7 +64,7 @@
                  <ul id="menu" class='dropdown-content'>
                   <li><a href="userfeed.jsp">home</a></li>
                   <li><a href="profile.jsp">profile</a></li>
-                  <li><a href="logout">logout</a></li>	
+                  <li><a class="modal-trigger" href="#uploadmodal">upload</a></li>
                    <!-- Redirects to logout servlet. -->
               </ul>
             

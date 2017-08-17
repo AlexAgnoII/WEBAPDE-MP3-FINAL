@@ -51,7 +51,8 @@
 
          <a class="modal-trigger" href="#searchmodal" id="searchb"><i class="material-icons" id="magglass">search</i></a>
 
-        <a href="logout" id="logoutb">LOGOUT</a> 
+        <a class="modal-trigger" href="#loginmodal" id="loginb">LOGIN</a> 
+        <!-- <a href="logout" id="logoutb">LOGOUT</a> -->
             
     </div>
     
@@ -75,6 +76,22 @@
 		<c:if test = "${empty Photo}">
 			<p id="notFound">No photo found!</p>
 		</c:if>
+		
+		<div id="loginmodal" class="modal">
+	        <div class="modal-content">
+	            <form action="login" method="POST">
+		            <p id="usernamet">/username</p>
+		            <input type="text" id="username" name="username"> <br> 
+		
+		            <p id="passwordt">/password</p>
+		            <input type="password" id="password" name="password"><br><br>
+		       	
+		       	 	<input type="checkbox" name="remember" class="filled-in checkbox-black" id="filled-in-box" checked="checked"/>
+		       	 	<label for="filled-in-box">Remember me</label> <br>   
+		           	<input type="submit" value="login" id="loginbmodal">
+	            </form>
+	        </div>
+      </div>
 		
 		<script src="scripts/searchResultScript.js">
 		</script>

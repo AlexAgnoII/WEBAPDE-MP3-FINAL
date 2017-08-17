@@ -219,3 +219,115 @@ a#searchbmodal:hover{
     border-radius: 3.5px;
     display: none; 
 }
+
+#loginmodal {
+    position: fixed; /*from absolute to fixed.*/
+    right: 8px;
+    top: 55px;
+    width: 310px;
+    background-color: #100077; 
+    margin: 0 auto;
+    text-align: center;
+    z-index: 4;
+    display: none;
+    border-radius: 3px;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#usernamet, #passwordt {
+    font-family: "Poppins";
+    font-size: 11.5px;
+    color: snow;
+    display: block;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 15px;
+    text-align: left;
+    font-weight: 300;
+    text-shadow: 0 5px 5px -5px #333;
+}
+
+#username, #password {
+    width: 225px;
+    height: 20px;
+    float: left;
+    margin-bottom: 3px;
+    margin-top: 2px;
+    margin-left: 15px;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: #0e0163;
+    border-width: 1.25px;
+    background: white;
+    font-family: "Poppins";
+    font-size: 11px;
+    font-weight: 600;
+    color: black;
+    opacity: 0.99;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#loginbmodal {
+    height: 20px;
+    width: 125px;
+    margin: 0 auto;
+    background: #100077;
+    border: 1px solid white;
+    border-radius: 4px;
+    border-color: white;
+    font-family: "Poppins";
+    font-size: 10px;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#loginbmodal:hover {
+    background: white;
+    color: #100077;
+    border-color: #100077;
+}
+
+
+#loginb {
+    background-color: #100077;
+    float: right;
+    display: inline;
+    border-width: 0px;
+    border-radius: 0px;
+    height: 42px;
+    font-family: "Poppins";
+    color: white;
+    width: 100px;  
+    font-size: 12px;
+    text-align: center;
+    padding-top: 11px;
+}
+
+#loginb:hover {
+    color: #100077;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #100077;
+    border-top: 0px;
+    border-right: 0px;  
+}
+
+
+.checkbox-black.filled-in[type="checkbox"] + label:after{
+  	border: 2px solid snow;
+ 	background: transparent;
+}
+
+.checkbox-black.filled-in[type="checkbox"]:checked + label:after{
+ 	background: black;
+}
+
+.checkbox-black.filled-in[type="checkbox"]:checked + label:before{
+	 border-top: 2px solid transparent;
+	 border-left: 2px solid transparent;
+	 border-right: 2px solid #fff;
+	 border-bottom: 2px solid #fff;
+}
