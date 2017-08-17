@@ -288,16 +288,13 @@ a#searchbmodal:hover{
     margin-top: 5px;
 }
 
-#picmodal {
-	position: fixed;
-    margin: 10 auto;
+.picmodal {
+	position: fixed; /*from absolute to fixed.*/
     width: 42%;
-    height: 62%;
-    text-align: left;
+    height: inherit;
+    top: 52px;
     border-radius: 3.5px;
-    display: none;
-    
-     
+    display: none;  
 }
 
 .pwrapper {
@@ -306,7 +303,6 @@ a#searchbmodal:hover{
     background-color: black;
     float: left;
     text-align: center;
-    margin-bottom: 10px;
     box-shadow: 0 5px 5px -5px #333;
 }
 
@@ -315,6 +311,7 @@ a#searchbmodal:hover{
     width: 35%;
     height: 365px;
     float: right;
+    text-align: left;
     border-style: solid;
     border-color: #100077;
     border-radius: 3px;

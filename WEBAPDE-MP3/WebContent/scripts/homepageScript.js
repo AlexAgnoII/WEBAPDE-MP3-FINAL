@@ -75,17 +75,19 @@
 		        		window.location = "photoSearch?searchTerm=" + searchTerm;
 			    }
 			});
-            
-            $('.modal').modal({
-                dismissible: true, 
-                opacity: 0.7,
-                endingTop: '0%',
-            });
+           
         });
         
-        $('#picmodal').modal({
+        $('.modal').modal({
+            dismissible: true, 
+            opacity: 0.7,
+            startTop: '0%',
+            endingTop: '0%',
+        });
+        
+        $('.picmodal').modal({
             dismissible: true, 
             opacity: 0.85,
-            startTop: '4%',
-            endingTop: '10%',
+            startTop: '14%',
+            endingTop: '14%',
         });

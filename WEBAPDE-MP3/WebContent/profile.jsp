@@ -99,9 +99,9 @@
         <!-- Switched searchb ID to class.-->
         <div id = "feed">
 	        <c:if test = "${not empty photoList}">
-	        
 	        	<c:forEach items="${photoList}" var="p">
-		         <div id="${p.photo_id}" class="modal">
+	        	
+		         <div id="${p.photo_id}" class="modal picmodal">
 		            <div class="pwrapper">
 		                    <img src="${p.photo_url}" class="imgmodal">
 		                </div>
@@ -132,7 +132,7 @@
 	        </c:if>
 	        
 	        <c:if test = "${empty photoList}">
-	        	No photos.
+	        	No Photo Found.
 	        </c:if>
         </div>
         

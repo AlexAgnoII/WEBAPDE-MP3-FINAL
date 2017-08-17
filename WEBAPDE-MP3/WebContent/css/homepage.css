@@ -246,6 +246,10 @@ html {
    
 }
 
+.img {
+	display: none;
+}
+
 .img:hover {
     opacity: 0.9;
 }
@@ -356,7 +360,7 @@ html {
     color: snow;
     display: flex;
     margin: 0 auto;
-    width: 88%;
+    width: 90%;
     padding: 5px;
 	justify-content: center;
 	transition: all 500ms ease-in-out;
@@ -398,23 +402,20 @@ p{
 }
 
 .picmodal { /*From ID to class*/
-	position: fixed; /*from absolute to fixed.*/
-    margin: 10 auto;
+    position: fixed; /*from absolute to fixed.*/
     width: 42%;
-    /*height: 62%;*/ /*commenting this out removes the excess space below the pic modal*/
+    height: 62%;
     top: 52px;
-    text-align: left;
     border-radius: 3.5px;
-    display: none; 
+    display: none;
 }
 
 .pwrapper {
-    width: 59%;
+ 	width: 59%;
     height: 400px;
     background-color: black;
     float: left;
     text-align: center;
-    margin-bottom: 10px;
     box-shadow: 0 5px 5px -5px #333;
 }
 
@@ -423,6 +424,7 @@ p{
     width: 35%;
     height: 365px;
     float: right;
+    text-align: left;
     border-style: solid;
     border-color: #100077;
     border-radius: 3px;
@@ -462,7 +464,7 @@ p{
 .iwrapperbottom {
     float: right;
     background-color: #100077;
-    height: 8%;
+    height: 35px;
     width: 35%;
     border-style: solid;
     border-color: #100077;

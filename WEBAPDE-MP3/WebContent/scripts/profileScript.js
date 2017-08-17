@@ -38,11 +38,11 @@
                 endingTop: '0%',
             });
 	        
-	        $('#picmodal').modal({
-                dismissible: true, 
-                opacity: 0.85,
-                startTop: '4%',
-                endingTop: '10%',
+	        $('.picmodal').modal({
+	        	dismissible: true, 
+	            opacity: 0.85,
+	            startTop: '14%',
+	            endingTop: '14%',
             });
            
 	        $('#uploadmodal').modal({

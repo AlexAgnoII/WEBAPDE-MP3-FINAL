@@ -73,21 +73,19 @@
         		<c:forEach items="${photoList}" var="p">
         		
 					<div id="${p.photo_id}" class="modal picmodal">
-						<div class="modal-content">
+						<!-- <div class="modal-content"> -->
 				            <div class="pwrapper">
-				                    <img src="${p.photo_url}" class="imgmodal">
-				                </div>
+				            	<img src="${p.photo_url}" class="imgmodal">
+				            </div>
 				                
-				                <div class="iwrapper">
-				                    <p class="uname">${p.user_username}</p><br><br>
-				                    <li style="list-style-type:none"><div class="divider"></div></li>
-				                    <p class="cap">${p.photo_description}</p>
-				                </div>
+				            <div class="iwrapper">
+				                 <p class="uname">${p.user_username}</p><br><br>
+				                 <li style="list-style-type:none"><div class="divider"></div></li>
+				                 <p class="cap">${p.photo_description}</p>
+				            </div>
 				                
-				                <div class="iwrapperbottom">
-				                  
-				                </div>
-				       </div>
+				            <div class="iwrapperbottom"></div>
+				       <!-- </div> -->
 			         </div>
 		        	<a class="modal-trigger imgwrapper" href="#${p.photo_id}">
 		        		<img src="${p.photo_url}" class="img">
