@@ -41,9 +41,9 @@
           <div id="uploadmodal" class="modal">
               <div id="uploadwrapper">
                   
-                  <form method="post" action="upload" id="uploadPic">
+                  <form method="post" action="upload" id="uploadPic" enctype="multipart/form-data">
                       
-                    <input type="file" id= "uploadb" name="pic" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus"><br><hr>
+                    <input type="file" id= "uploadb" name="myFile" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus"><br><hr>
                         Title: <input type = "text" name ="title" id="titlef"><br>
                         Description: <input type = "text" name = "description" id="descf"><br>
                         Tags: <input type = "text" name = "tags" id="tagsf"><br>
@@ -53,6 +53,7 @@
                         <input type="radio" value="public" name="public"/> <label for="test2" class="lbl">Public</label><br>
                       
                         Share to<input type = "text" name = "share" id="sharef"><br>
+                    	<input type="submit">
                     </form>
 
                 <div id="question">
