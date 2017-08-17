@@ -13,6 +13,38 @@ import bean.Photo;
 
 public class PhotoService {
 	
+	public static List<Photo> getUserPhotos(String viewer, String visitedUser){
+		List<Photo> photoList = null;
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+		
+		try {
+			TypedQuery<Photo> query = em.createQuery("SELECT photo FROM photo photo, users users, shared_photos shared_photos " +
+													 "WHERE( " +
+													 "photo.photo_privacy = ?1 " +
+													 "AND photo.user_username = ?2 " +
+													 ") " +
+													 "OR( " +
+													 "photo.photo_privacy = ?3 " +
+													 "AND photo.user_username = ?2 " +
+													 "AND shared_photos.shared_user_username = ?4 " +
+													 "AND shared_photos.photo_id = photo.photo_id ) " +
+													 "GROUP BY photo.photo_id " +
+													 "ORDER BY photo.photo_privacy", Photo.class);
+			query.setParameter(1, "public");
+			query.setParameter(2, visitedUser);
+			query.setParameter(3, "private");
+			query.setParameter(4, viewer);
+			photoList = query.getResultList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			em.close();
+		}
+		return photoList;
+	}
+	
 	public static List<Photo> getUserFeed(String username){
 		List<Photo> photoList = null;
 		
@@ -126,5 +158,11 @@ public class PhotoService {
 			em.close();
 		}
 	}
-
+	
+	public static void main(String[] args) {
+		List<Photo> photoList = PhotoService.getUserPhotos("Eric", "Claude");
+		for(Photo p: photoList) {
+			System.out.println(p.toString());
+		}
+	}
 }
