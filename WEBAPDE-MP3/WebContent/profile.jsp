@@ -44,7 +44,19 @@
          </div> 
         
           <div id="uploadmodal" class="modal">
-		        UPLOAD STUFF GOES HERE
+          	<p>Select file</p>
+            <form method="post" action="upload" id="uploadPic">
+            <input type="file" id= "uploadb" name="pic" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus">
+	            Title: <input type = "text" name ="title"><br>
+	            Description: <input type = "text" name = "description"><br>
+	            Privacy: <input type = "text" name = "privacy"> <br>
+	            Share to<input type = "text" name = "share"><br>
+	            Tags: <input type = "text" name = "tags"><br>
+            </form>
+            <div id="question">
+	        	<a class="waves-effect waves-light btn" id="upload">Upload</a> <br>
+	            <a class="waves-effect waves-light btn" id="back" href="profile.jsp">Back</a> <br>
+            </div>
 		        
 		  </div>
         
