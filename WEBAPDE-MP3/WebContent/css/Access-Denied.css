@@ -1,48 +1,175 @@
-@import url(//fonts.googleapis.com/css?family=Vidaloka);
-@import url(//fonts.googleapis.com/css?family=Raleway:400,600);
-    
-body {
-    background: linear-gradient(#780206, #061161);
-    background-attachment: fixed;
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700');
+
+html {
+    font-family: "Poppins";
+}
+
+p{
+    text-transform: none;
+}
+
+#top, #bottom, #left, #right {
+	background: #100077;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 10px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 0px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
+
+#navbar {
+    background-color: white;
+    height: 55px;
+    width: 100%;
+    left: 0;
+    display: inline;
+    position: fixed;
+    border-style: solid;
+    border-color: #100077;
+    border-width: 10px;
+    border-bottom: 0px;
+    z-index: 5;   
+    top: 0;
+}
+
+#tbox {
+    background-color: #100077;
+    width: 83px;
+    height: 85px;
+    margin-top: 25px;
+    margin-left: 0px;
+    position: absolute;
+    border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+    border-radius: 0px;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#tbox:hover {
+	background-color: white;
+	border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+}
+
+#tbox:hover #title {
+	color: #100077;
+}
+
+#title {
+    font-family: "Poppins";
+    font-size: 35px;
+    line-height: 90%;
+    color: white;
+    margin-left: -25px;
+    margin-top: 7px;  
+    font-weight: 500; 
+    letter-spacing: -1px;
+}
+
+#menu {
+	margin-top: 108px;
+	background-color: #100077;
+	border-color: #100077;
+	border-style: solid;
+	border-width: 1px;
+	border-left: 0px;
+	border-top: 0px;
+	text-align: center;
+
+}
+
+#menu a {
+	color: white;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+#menu a:hover {
+	color: #100077;;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+#magglass {
+    color: white;
+    float: right;
+    font-size: 23px;
+    display: inline;
+    background-color: #100077;
+    padding: 9px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #100077;
+    border-top: 0px;
+    border-right: 0px;
+}
+
+#magglass:hover {
+   color: #100077;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #100077;
+    border-top: 0px;
+    border-right: 0px;  
 }
 
 #warning {
-    height: 25%;
+    height: 28%;
     width: 40%;
-    background-color: rgba(255, 250, 250, 0.7);
+    background-color: white;
     margin: 10% auto;
-    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #100077;
+    border-radius: 3px;
     text-align: center;
-    box-shadow: 5px 5px 2px #252525;
+    box-shadow: 0 5px 5px -5px #333;
 }
 
 #oops {
     transform: translate(0%, 25px);
-    font-family: "Raleway";
+    font-family: "Poppins";
     font-size: 35px;
     margin: 5px 5px;
-    line-height: 100%;
+    line-height: 105%;
     font-weight: 600;
+    color: #100077;
     
 }
 
-
 #loginb {
     margin: 10px auto;
-    background: rgba(0, 0, 0, 0.9);
+    background: #100077;
     position: relative;
     height: 20%;
     width: 40%;
+    padding-top: -5px;
     font-size: 11px;;
-    box-shadow: 1px 1px 1px #252525;
+    box-shadow: 0 5px 5px -5px #333;
     border-radius: 3px;
     
 }
 
 
 #noaccount {
-    color: snow;
-    font-family: "Raleway";
+    color: #100077;
+    font-family: "Poppins";
     font-size: 1vw;
     margin: -9% auto;
     display: block;
