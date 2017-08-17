@@ -13,10 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.User;
 
 import bean.Photo;
+import bean.Shared_Photos;
 import bean.Tag;
 import bean.Tag_Photo_Relation;
 import bean.Users;
 import service.PhotoService;
+import service.SharedPhotoService;
 import service.TagPhotoService;
 import service.TagService;
 import service.UserService;
@@ -183,26 +185,16 @@ public class PhotoController extends HttpServlet {
 	
 	public void filterByTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		List<Photo> photoList;
-		
-		photoList = PhotoService.filterByTag(request.getParameter("search"));
+		String term = request.getParameter("searchTerm");
+		System.out.println("The term: " + term);
+		photoList = PhotoService.filterByTag(term);
 		
 		for(Photo p: photoList) {
 			System.out.println(p.toString());
 		}
-//		PhotoService ps = new PhotoService();
-//		ArrayList<Photo> test = new ArrayList<Photo>();
-//		System.out.println(request.getParameter("search"));
-//		
-//		test = ps.filterByTag(request.getParameter("search"));
-//		if(test != null) {
-//			for (Photo p : test) {
-//				System.out.println(p.getPhoto_title());
-//			}
-//		}
-//		
-//		else System.out.println("PHOTO NOT FOUND");
-//		request.setAttribute("Photo", test);
-		
+
+		request.setAttribute("term", term);
+		request.setAttribute("photoList", photoList);
 		request.getRequestDispatcher("searchResult.jsp").forward(request,  response);
 
 	}
@@ -244,7 +236,17 @@ public class PhotoController extends HttpServlet {
 			TagPhotoService.addTagPhotoRelation(tpr);
 			System.out.println("photo id: " + tpr.getPhoto_id() + " tag id " + t.getTag_id() + "name " + t.getTag_name());
 		}
+		
 		//if private, map shared photos
+		if(request.getParameter("share").equals("private")) {
+            Shared_Photos sp = new Shared_Photos();
+            sp.setPhoto_id(p.getPhoto_id());
+            String[] sharedTo = SharedPhotoService.split(request.getParameter("share"));
+            for(String s: sharedTo) {
+                sp.setShared_user_username(s);
+                SharedPhotoService.addSharedPhoto(sp);
+            }
+        }
 		
 		//message once it's done
 		System.out.println("Photo added!");

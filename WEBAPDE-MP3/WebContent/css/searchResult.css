@@ -160,9 +160,15 @@ p{
     color: #100077;
 }
 
+#theResults{
+	margin: 0 auto;
+	font-weight: 700;
+    color: #100077;
+}
+
 #feed {
     position: relative;
-    top: 15%;
+    top: 60px;
     text-align: center;
    
 }
@@ -331,3 +337,4 @@ a#searchbmodal:hover{
 	 border-right: 2px solid #fff;
 	 border-bottom: 2px solid #fff;
 }
+

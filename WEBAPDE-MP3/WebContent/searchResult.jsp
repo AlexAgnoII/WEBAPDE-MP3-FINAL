@@ -33,7 +33,7 @@
      <div id="searchmodal" class="modal">
         <div class="modal-content">
             <a id="searchbmodal"><i class="material-icons" id="magglassmodal">search</i></a>
-            <form method="get" action="photoSearch" id="searchBar"><input type="text" id="searchbox" name="search"></form>
+            <input type="text" id="searchbox" name="search">
 
         </div>
      </div> 
@@ -43,41 +43,23 @@
         <p id="title"> this.<br>pic</p></a>
 
          <ul id="menu" class='dropdown-content'>
-          <li><a href="userfeed.jsp">home</a></li>
-          <li><a href="profile.jsp">profile</a></li>
-          <li><a class="modal-trigger" href="#uploadmodal">upload</a></li>
-           <!-- Redirects to logout servlet. -->
+          <li><a href="homepage.jsp">Back</a></li>
+
         </ul>
 
          <a class="modal-trigger" href="#searchmodal" id="searchb"><i class="material-icons" id="magglass">search</i></a>
-
-        <a class="modal-trigger" href="#loginmodal" id="loginb">LOGIN</a> 
+		
+		<c:if test="${empty un}">
+        	<a class="modal-trigger" href="#loginmodal" id="loginb">LOGIN</a> 
+        </c:if>
+        <c:if test="${not empty un}">
+        	<a class="modal-trigger" href="logout" id="loginb">LOGOUT</a>
+        </c:if> 
         <!-- <a href="logout" id="logoutb">LOGOUT</a> -->
             
     </div>
     
-    <div id="feed"> 
-		<c:if test = "${not empty Photo}">
-			<c:forEach items="${Photo}" var = "p">
-				
-				<div class="picwrapper">
-					<img src="${p.url}" alt="${p.title}" class="pics">
-	                <p class="un">${p.uploader}</p><br>
-	                <p class="caption">${p.description}</p> <br><hr>
-	                <p id="tags">
-	                	<c:forEach items="${p.tags}" var = "t">
-	                		#${t} 
-	                	</c:forEach>
-	                </p>
-	            </div>
-			</c:forEach>
-		</c:if>
-		
-		<c:if test = "${empty Photo}">
-			<p id="notFound">No photo found!</p>
-		</c:if>
-		
-		<div id="loginmodal" class="modal">
+     <div id="loginmodal" class="modal">
 	        <div class="modal-content">
 	            <form action="login" method="POST">
 		            <p id="usernamet">/username</p>
@@ -92,9 +74,68 @@
 	            </form>
 	        </div>
       </div>
+      
+         <div id="sharepicmodal" class="modal">
+       		 	SHARE PIC  STUFF GOES HERE
+        
+         </div>
+        
+         <div id="addtagmodal" class="modal">
+        		ADD TAG STUFF GOES HERE
+         </div> 
+         
+
+    
+    <div id="feed"> 
+    		<h1 id="theResults">Search results for: ${term}</h1>
+		  <c:if test = "${not empty photoList}">
+        		<c:forEach items="${photoList}" var="p">
+		            <div class ="fwrapper">
+		                <div class="pwrapper">
+		                    <img src="${p.photo_url}" class="img">
+		                </div>
+		                
+		                <div class="iwrapper">
+		                    <p class="uname"> 
+			                    <c:if test="${sessionScope.un != p.user_username}">
+			                    	<a data-userName="${p.user_username}" class="userNameClicky">${p.user_username}</a>
+			                    </c:if>
+			                    
+			                    <c:if test="${sessionScope.un == p.user_username}">
+			                    	${p.user_username}
+			                    </c:if>
+		                    </p>
+		                    <br>
+		                    <br>
+		                    <li style="list-style-type:none"><div class="divider"></div></li>
+		                    <p class="cap">${p.photo_description}</p>
+		                </div>
+		                
+		                <div class="iwrapperbottom">
+		                	<c:if test="${sessionScope.un == p.user_username}">
+		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" > <!-- switched sharepicb from ID to Class -->
+		                      		<i class="material-icons logos">supervisor_account</i>
+		                      	</a>
+		                      
+		                      	<a class="modal-trigger addtagb" href="#addtagmodal" > <!-- switched addtagb from ID to Class -->
+		                      		<i class="material-icons logos">add_location</i>
+		                      	</a>
+		                	</c:if>
+		                </div>
+		                
+		            </div>
+	            </c:forEach>
+	           <a href="#" id="showb">show more</a>
+           </c:if>
 		
-		<script src="scripts/searchResultScript.js">
-		</script>
+		<c:if test = "${empty photoList}">
+			<p id="notFound">No photo found!</p>
+		</c:if>
+		
+
+
 	</div>   
+			<script src="scripts/searchResultScript.js">
+		</script>
 </body>
 </html>

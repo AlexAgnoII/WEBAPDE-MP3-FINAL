@@ -21,9 +21,25 @@
             
              $(document).ready(function() {             
 	 	        //Submit form once image if clicked.
-	 	        $("a#searchbmodal").click(function() {
-	 	        	$("form#searchBar").submit();
-	 	        });
+     			$("a#searchbmodal").click(function() {
+    	        	var searchTerm = $("#searchbox").val();
+    	        	var temp = searchTerm;
+    	        	if(searchTerm.length == 0 || $.trim(temp) == '' )
+    	        		Materialize.toast('Please enter an input!', 3000) 
+    	        	else
+    	        		window.location = "photoSearch?searchTerm=" + searchTerm;
+    	        });
+     			
+    			$("#searchbox").on('keyup', function (e) {
+    			    if (e.keyCode == 13) {
+    		        	var searchTerm = $("#searchbox").val();
+    		        	var temp = searchTerm;
+    		        	if(searchTerm.length == 0 || $.trim(temp) == '' )
+    		        		Materialize.toast('Please enter an input!', 3000) 
+    		        	else
+    		        		window.location = "photoSearch?searchTerm=" + searchTerm;
+    			    }
+    			});
              
              
 	             $('.modal').modal({
@@ -60,5 +76,6 @@
 	            	 
 	            	 window.location = "visitThisUser?user=" + username;
 	              });
+	            
 	          
              });
