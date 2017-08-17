@@ -93,14 +93,17 @@
 		                </div>
 		                
 		                <div class="iwrapperbottom">
-		                      <a class="modal-trigger sharepicb" href="#sharepicmodal" > <!-- switched sharepicb from ID to Class -->
-		                      	<i class="material-icons" id="logos">supervisor_account</i>
-		                      </a>
+		                	<c:if test="${sessionScope.un == p.user_username}">
+		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" > <!-- switched sharepicb from ID to Class -->
+		                      		<i class="material-icons" id="logos">supervisor_account</i>
+		                      	</a>
 		                      
-		                      <a class="modal-trigger addtagb" href="#addtagmodal" > <!-- switched addtagb from ID to Class -->
-		                      	<i class="material-icons" id="logos">add_location</i>
-		                      </a>
+		                      	<a class="modal-trigger addtagb" href="#addtagmodal" > <!-- switched addtagb from ID to Class -->
+		                      		<i class="material-icons" id="logos">add_location</i>
+		                      	</a>
+		                	</c:if>
 		                </div>
+		                
 		            </div>
 	            </c:forEach>
 	           <a href="#" id="showb">show more</a>

@@ -117,6 +117,7 @@ public class PhotoController extends HttpServlet {
 				}
 				
 				System.out.println("Forwarding to userfeed.jsp..");
+				System.out.println("Sesson: " + request.getSession().getAttribute("un"));
 				System.out.println("testing");
 				request.setAttribute("photoList", photoList);
 				request.getRequestDispatcher("userfeed.jsp").forward(request, response);

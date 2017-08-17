@@ -33,7 +33,7 @@
               <ul id="menu" class='dropdown-content'>
               	  
                   <li><a href="homepage.jsp">Back</a></li>
-                   <!-- Redirects to logout servlet. -->
+               
               </ul>
               
             <a id="search"><i class="material-icons" id="magglass">search</i></a>
