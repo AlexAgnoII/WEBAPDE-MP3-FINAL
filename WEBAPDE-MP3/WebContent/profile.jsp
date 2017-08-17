@@ -43,6 +43,15 @@
             </div>
          </div> 
         
+         <div id="sharepicmodal" class="modal">
+       		 	SHARE PIC  STUFF GOES HERE
+        
+         </div>
+        
+         <div id="addtagmodal" class="modal">
+        		ADD TAG STUFF GOES HERE
+         </div>
+        
         <div id="navbar">
                 <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
                 <p id="title"> this.<br>pic</p></a>
@@ -50,7 +59,7 @@
                  <ul id="menu" class='dropdown-content'>
                   <li><a href="userfeed.jsp">home</a></li>
                   <li><a href="profile.jsp">profile</a></li>
-                  <li><a href="logout">logout</a></li>
+                  <li><a href="logout">logout</a></li>	
                    <!-- Redirects to logout servlet. -->
               </ul>
             
@@ -84,8 +93,15 @@
 		                </div>
 		                
 		                <div class="iwrapperbottom">
-		                    <i class="material-icons logos">supervisor_account</i>
-		                    <i class="material-icons logos">add_location</i>
+		                	<c:if test="${sessionScope.un == p.user_username}">
+		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" > <!-- switched sharepicb from ID to Class -->
+		                      		<i class="material-icons logos">supervisor_account</i>
+		                      	</a>
+		                      
+		                      	<a class="modal-trigger addtagb" href="#addtagmodal" > <!-- switched addtagb from ID to Class -->
+		                      		<i class="material-icons logos">add_location</i>
+		                      	</a>
+		                	</c:if>
 		                </div>
 		         	</div> 
 		         	

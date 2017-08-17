@@ -372,3 +372,12 @@ a#searchbmodal:hover{
     color: white;
 }
 
+#sharepicmodal, #addtagmodal {
+    position: fixed; /*from absolute to fixed*/
+    margin: 10 auto;
+    width: 42%;
+    height: 63%;
+    text-align: left;
+    border-radius: 3.5px;
+    display: none; 
+}
