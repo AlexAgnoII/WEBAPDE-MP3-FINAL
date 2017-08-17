@@ -194,8 +194,15 @@ public class PhotoController extends HttpServlet {
 	public void filterByTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		List<Photo> photoList;
 		String term = request.getParameter("searchTerm");
+
 		System.out.println("The term: " + term);
-		photoList = PhotoService.filterByTag(term);
+		
+		if(request.getSession().getAttribute("un") == null)
+			photoList = PhotoService.filterByTag(term);
+		else {
+			String username = request.getAttribute("un").toString();
+			photoList = PhotoService.filterByTag(username, term);
+		}
 		
 		for(Photo p: photoList) {
 			System.out.println(p.toString());
@@ -204,7 +211,6 @@ public class PhotoController extends HttpServlet {
 		request.setAttribute("term", term);
 		request.setAttribute("photoList", photoList);
 		request.getRequestDispatcher("searchResult.jsp").forward(request,  response);
-
 	}
 	
 	public void addPhoto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

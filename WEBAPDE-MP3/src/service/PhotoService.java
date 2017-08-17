@@ -13,6 +13,35 @@ import bean.Photo;
 
 public class PhotoService {
 	
+	public static List<Photo> filterByTag(String tag){
+		List<Photo> photoList = null;
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+		
+		try {
+			TypedQuery<Photo> query = em.createQuery("SELECT photo " + 
+													 "FROM photo photo, tag tag, tag_photo_relation tag_photo_relation, " +
+													 "shared_photos shared_photos " + 
+													 "WHERE( " +  
+													 "tag_photo_relation.photo_id = photo.photo_id " + 
+													 "AND tag.tag_id = tag_photo_relation.tag_id " + 
+													 "AND photo.photo_privacy = ?1 " + 
+													 "AND tag.tag_name = ?2 " + 
+													 ") " +
+													 "GROUP BY photo.photo_id " + 
+													 "ORDER BY photo.photo_uploadDate", Photo.class);
+			query.setParameter(1, "public");
+			query.setParameter(2, tag);
+			photoList = query.getResultList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			em.close();
+		}
+		return photoList;
+	}
+	
 	public static List<Photo> getUserPhotos(String viewer, String visitedUser){
 		List<Photo> photoList = null;
 		
@@ -97,19 +126,44 @@ public class PhotoService {
 		return photoList;
 	}
 	
-	public static List<Photo> filterByTag(String tag){
+	public static List<Photo> filterByTag(String username, String tag){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
 		
 		EntityManager em = emf.createEntityManager();
 		
 		List<Photo> photoList = null;
 		try {
-			TypedQuery<Photo> query = em.createQuery("SELECT photo FROM photo photo, " +
-													 "tag tag, tag_photo_relation tag_photo_relation " + 
-													 "WHERE photo.photo_id = tag_photo_relation.photo_id " +
-													 "AND tag.tag_id = tag_photo_relation.tag_id AND tag.tag_name = ?1 " +
-													 "ORDER BY photo_uploadDate", Photo.class);
-			query.setParameter(1, tag);
+			TypedQuery<Photo> query = em.createQuery("SELECT photo " + 
+													 "FROM photo photo, tag tag, tag_photo_relation tag_photo_relation, " +
+													 "shared_photos shared_photos " + 
+													 "WHERE( " +  
+													 "tag_photo_relation.photo_id = photo.photo_id " + 
+													 "AND tag.tag_id = tag_photo_relation.tag_id " + 
+													 "AND photo.photo_privacy = ?1 " + 
+													 "AND tag.tag_name = ?2 " + 
+													 ") " + 
+													 "OR( " +  
+													 "tag_photo_relation.photo_id = photo.photo_id " + 
+													 "AND photo.photo_id = shared_photos.photo_id " + 
+													 "AND tag_photo_relation.photo_id = shared_photos.photo_id " + 
+													 "AND tag.tag_id = tag_photo_relation.tag_id " + 
+													 "AND photo.photo_privacy = ?3 " + 
+													 "AND shared_photos.shared_user_username = ?4 " + 
+													 "AND tag.tag_name = ?2 " + 
+													 ") " +
+													 "OR( " +  
+													 "tag_photo_relation.photo_id = photo.photo_id " + 
+													 "AND tag_photo_relation.tag_id = tag_photo_relation.tag_id " + 
+													 "AND photo.photo_privacy = ?3 " + 
+													 "AND photo.user_username =  ?4 " + 
+													 "AND tag.tag_name = ?2 " + 
+													 ") " + 
+													 "GROUP BY photo.photo_id " + 
+													 "ORDER BY photo.photo_uploadDate", Photo.class);
+			query.setParameter(1, "public");
+			query.setParameter(2, tag);
+			query.setParameter(3, "private");
+			query.setParameter(4, username);
 			photoList = query.getResultList();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -159,10 +213,4 @@ public class PhotoService {
 		}
 	}
 	
-	public static void main(String[] args) {
-		List<Photo> photoList = PhotoService.getUserPhotos("Eric", "Claude");
-		for(Photo p: photoList) {
-			System.out.println(p.toString());
-		}
-	}
 }
