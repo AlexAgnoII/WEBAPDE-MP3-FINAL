@@ -20,10 +20,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
       
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script> 
-        
+   
     </head>
     
     <body>
@@ -36,28 +33,34 @@
             <div class="modal-content">
                 <a id="searchbmodal"><i class="material-icons" id="magglassmodal">search</i></a>
   
-                
-                <form method="get" action="photoSearch" id="searchBar">
                 <input type="text" id="searchbox" name="search"></form>
               
             </div>
          </div> 
         
           <div id="uploadmodal" class="modal">
-          	<p>Select file</p>
-            <form method="post" action="upload" id="uploadPic">
-            <input type="file" id= "uploadb" name="pic" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus">
-	            Title: <input type = "text" name ="title"><br>
-	            Description: <input type = "text" name = "description"><br>
-	            Privacy: <input type = "text" name = "privacy"> <br>
-	            Share to<input type = "text" name = "share"><br>
-	            Tags: <input type = "text" name = "tags"><br>
-            </form>
-            <div id="question">
-	        	<a class="waves-effect waves-light btn" id="upload">Upload</a> <br>
-	            <a class="waves-effect waves-light btn" id="back" href="profile.jsp">Back</a> <br>
-            </div>
-		        
+              <div id="uploadwrapper">
+                  
+                  <form method="post" action="upload" id="uploadPic">
+                      
+                    <input type="file" id= "uploadb" name="pic" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus"><br><hr>
+                        Title: <input type = "text" name ="title" id="titlef"><br>
+                        Description: <input type = "text" name = "description" id="descf"><br>
+                        Tags: <input type = "text" name = "tags" id="tagsf"><br>
+                        
+                        <input type="radio" value="private" name="privacy"/> <label for="test2" class="lbl">Privacy</label>            
+                       
+                        <input type="radio" value="public" name="public"/> <label for="test2" class="lbl">Public</label><br>
+                      
+                        Share to<input type = "text" name = "share" id="sharef"><br>
+                    </form>
+
+                <div id="question">
+                    <a class="waves-effect waves-light btn" id="uploadbm">Upload</a>
+                    <a class="waves-effect waves-light btn" id="backbm" href="profile.jsp">Back</a> <br>
+                </div>
+
+              </div>      
 		  </div>
         
          <div id="sharepicmodal" class="modal">

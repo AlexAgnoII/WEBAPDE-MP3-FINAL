@@ -153,6 +153,116 @@ p{
     border-right: 0px;  
 }
 
+#feed {
+    position: relative;
+    margin: 0 auto;
+    width: 45%;
+    top: 75px;
+    text-align: center;
+    
+}
+
+.pwrapper {
+    width: 59%;
+    height: 400px;
+    background-color: black;
+    float: left;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+.iwrapper {
+    background-color: #fcfcfc;
+    width: 35%;
+    height: 365px;
+    float: right;
+    border-style: solid;
+    border-color: #100077;
+    border-radius: 3px;
+    border-width: 1.5px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    text-align: left;
+}
+
+.img {
+	height: 100%;
+    margin: 0 auto;  
+}
+
+.uname {
+    color: #100077;
+    font-family: "Poppins";
+    font-size: 11.5px;
+    font-weight: 600;
+    display: inline;
+    position: relative;
+    top: 12px;
+    left: 10px;
+}
+
+.cap {
+    font-family: "Poppins";
+    font-size: 10px;
+    color: #100077;
+    width: 90%;
+    position: relative;
+    line-height: 125%;
+    margin: 5 auto;
+    margin-left: 15px;
+}
+
+.iwrapperbottom {
+    float: right;
+    background-color: #100077;
+    height: 35px;
+    width: 35%;
+    border-style: solid;
+    border-color: #100077;
+    border-radius: 3px;
+    border-width: 2px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    text-align: center;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+.logos {
+    font-size: 25px;
+    color: white;
+}
+
+#showb {
+    font-family: "Poppins";
+    font-size: 12px;
+    background: #100077;
+    border-style: solid;
+    border-color: #100077;
+    border-radius: 5px;
+    border-width: 1px;
+    color: white;
+    display: flex;
+    margin: 10 auto;
+    width: 100%;
+    padding: 5px;
+	justify-content: center;
+	transition: all 500ms ease-in-out;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#showb:hover {
+    background-color: transparent;
+    color: #100077;
+    border-style: solid;
+    border-color: #100077;
+    border-radius: 5px;
+    border-width: 1px;
+    font-weight: 500;
+}
+
 #notFound {
     margin: 0 auto;
     font-size: 20px;
@@ -321,6 +431,10 @@ a#searchbmodal:hover{
     border-right: 0px;  
 }
 
+h1 {
+	font-size: 30px;
+	padding: 5px;
+}
 
 .checkbox-black.filled-in[type="checkbox"] + label:after{
   	border: 2px solid snow;

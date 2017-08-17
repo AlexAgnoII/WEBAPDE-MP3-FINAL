@@ -84,10 +84,8 @@
         		ADD TAG STUFF GOES HERE
          </div> 
          
-
-    
     <div id="feed"> 
-    		<h1 id="theResults">Search results for: ${term}</h1>
+    	<h1 id="theResults">Search results for: ${term}</h1>
 		  <c:if test = "${not empty photoList}">
         		<c:forEach items="${photoList}" var="p">
 		            <div class ="fwrapper">
@@ -120,7 +118,8 @@
 		                      	<a class="modal-trigger addtagb" href="#addtagmodal" > <!-- switched addtagb from ID to Class -->
 		                      		<i class="material-icons logos">add_location</i>
 		                      	</a>
-		                	</c:if>
+		                 	</c:if>
+		                	<br>
 		                </div>
 		                
 		            </div>
@@ -129,7 +128,7 @@
            </c:if>
 		
 		<c:if test = "${empty photoList}">
-			<p id="notFound">No photo found!</p>
+			<p id="notFound">No photos found!</p>
 		</c:if>
 		
 

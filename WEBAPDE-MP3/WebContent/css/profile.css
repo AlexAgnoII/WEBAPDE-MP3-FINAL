@@ -381,3 +381,74 @@ a#searchbmodal:hover{
     border-radius: 3.5px;
     display: none; 
 }
+
+#uploadmodal {
+    width: 30%;
+}
+
+#uploadwrapper {
+    position: relative;
+    height: 50%;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#titlef, #descf, #tagsf, #sharef {
+    width: 225px;
+    height: 20px;
+    margin-bottom: 10px;
+    margin-top: 2px;
+    margin-left: 15px;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: #0e0163;
+    border-width: 1.25px;
+    background-color: transparent;
+    font-family: "Poppins";
+    font-size: 11px;
+    font-weight: 600;
+    color: black;
+    opacity: 0.99;
+    box-shadow: 0 5px 5px -6px #333;   
+}
+
+#descf {
+    width: 225px;
+    height: 35px;
+}
+
+#tagsf {
+    width: 200px;
+    height: 25px;
+}
+
+#sharef {
+    width: 200px;
+}
+
+#question {
+    text-align: center;
+}
+
+#uploadmodal p {
+    font-size: 10px;
+}
+
+#uploadbm, #backbm {
+    background-color: #100077;
+    display: inline;
+    border-width: 0px;
+    border-radius: 3px;
+    height: 60px;
+    font-family: "Poppins";
+    color: white;
+    width: 250px;  
+    font-size: 11px;
+    text-align: center;
+    padding: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
