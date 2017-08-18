@@ -13,6 +13,7 @@
             var photoID;
             var photoName;
             $(document).ready(function() {	            
+            	
 	            //Submit form once image if clicked.
 				$("a#searchbmodal").click(function() {
 		        	var searchTerm = $("#searchbox").val();
@@ -84,4 +85,43 @@
 	            	  console.log("name: " + photoName);
 	            	  $("span#sharePChosen").html(photoName);
 	              });
-	         });
+	              
+	              $("#sharef").prop('disabled', true);
+	              
+	              $("input#pr").click(function() {
+	            	 console.log("private clicked"); 
+	            	 if($("input#pr").is(':checked'))
+	            		 $("#sharef").prop('disabled', false);
+	              });
+	         
+	              $("input#pu").click(function() {
+		            	 console.log("public clicked");
+		            	 if($("input#pu").is(':checked')) {
+		            		 $("#sharef").prop('disabled', true)
+		            		 $("#sharef").val("");
+		            	 }
+		           });
+	              
+	              $("button#submitTag").click(function() {
+	            	 if($("input#tagLoc").val().length == 0  ||$("input#tagLoc").val().length == '') {
+	            		 Materialize.toast('Please enter an input!', 3000);
+	            	 }
+	            	 
+	            	 else {
+	            		 $("input#idTagHolder").val(photoID);
+	            		 $("form#tagForm").submit();
+	            	 }
+	              });
+	              
+	              $("button#submitShare").click(function() {
+		            	 if($("input#shareLoc").val().length == 0  ||$("input#shareLoc").val().length == '') {
+		            		 Materialize.toast('Please enter an input!', 3000);
+		            	 }
+		            	 
+		            	 else {
+		            		 $("input#idShareHolder").val(photoID);
+		            		 $("form#shareForm").submit();
+		            	 }
+		           });
+            
+            });

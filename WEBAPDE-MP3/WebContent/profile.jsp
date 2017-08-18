@@ -47,10 +47,12 @@
                         Title: <input type = "text" name ="title" id="titlef"><br>
                         Description: <input type = "text" name = "description" id="descf"><br>
                         Tags: <input type = "text" name = "tags" id="tagsf"><br>
-                        
-                        <input type="radio" value="private" name="privacy"/> <label for="test2" class="lbl">Privacy</label>            
-                       
-                        <input type="radio" value="public" name="public"/> <label for="test2" class="lbl">Public</label><br>
+
+					      <input name="group1" type="radio" id="pu" value="public"/>
+      					  <label for="pu">Public</label> <br>                        
+					      <input name="group1" type="radio" id="pr" value="private"/>
+					      <label for="pr">Private</label> <br>
+
                       
                         Share to<input type = "text" name = "share" id="sharef"><br>
                     	<input type="submit">
@@ -65,14 +67,22 @@
 		  </div>
         
          <div id="sharepicmodal" class="modal">
-       		 	Add tags to <span id="sharePChosen"></span>:
-       		 	<br>Enter tags: <input type = "text" name = "tags">
-        		
+			<form method="post" action="shareTo" id="shareForm">
+        		Share <span id="sharePChosen"></span> to: 
+        		<br><input type = "text" name = "share" id="shareLoc">
+        		<input type="hidden" name="photoId" id="idShareHolder">
+        		<button id="submitShare">Submit</button>
+        	</form>
          </div>
         
          <div id="addtagmodal" class="modal">
-        		Share <span id="tagPChosen"></span> to: 
-        		<br>Share to: <input type = "text" name = "share">
+         	
+        	<form method="post" action="addTags" id="tagForm">
+       		 	Add tags to <span id="tagPChosen"></span>:
+       		 	<br>Enter tags: <input type = "text" name = "tags" id="tagLoc">
+       		 	<input type="hidden" name="photoId" id="idTagHolder">
+       		 	<button id="submitTag">Submit</button>
+        	</form>	
          </div>
         
         <div id="navbar">

@@ -33,7 +33,7 @@ import service.UserService;
 /**
  * Servlet implementation class PhotoController
  */
-@WebServlet(urlPatterns= {"/upload", "/photoSearch", "/showPublic", "/showUserFeedPhotos", "/showUserPhotos", "/visitThisUser"})
+@WebServlet(urlPatterns= {"/upload", "/photoSearch", "/showPublic", "/showUserFeedPhotos", "/showUserPhotos", "/visitThisUser", "/addTags", "/shareTo"})
 @MultipartConfig
 public class PhotoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -74,6 +74,7 @@ public class PhotoController extends HttpServlet {
 		
 		if(!userToVisit.equals(currentUser)) {
 			List<Photo> photoList;
+			List<Tag> tagList;
 			Users theUser = UserService.getUser(userToVisit);
 			System.out.println("TheUser: " + theUser.getUsers_username());
 	
@@ -116,6 +117,8 @@ public class PhotoController extends HttpServlet {
 		switch(urlpattern) {
 		case"/upload": addPhoto(request, response);
 								break;
+		case"/shareTo" : shareTo(request, response); break;
+		case"/addTags": addTags(request, response); break;
 		}
 	}
 	
@@ -305,5 +308,75 @@ public class PhotoController extends HttpServlet {
       }
 
 		response.sendRedirect("profile.jsp");
+	}
+	
+	public void addTags(HttpServletRequest request, HttpServletResponse response) {
+		ArrayList<Tag> existingTags = new ArrayList<Tag>();
+		ArrayList<Tag> confirmedTags = new ArrayList<Tag>();
+		Tag_Photo_Relation tpr = new Tag_Photo_Relation();
+		int photoid = Integer.parseInt(request.getParameter("photoId"));
+		tpr.setPhoto_id(photoid);
+		//split the inputs
+		String[] newTags = TagService.split(request.getParameter("tags"));
+		//check each tag if they already exist
+		for(String s: newTags) {
+			TagService.checkTag(s);
+			existingTags.add(TagService.queryTag(s));
+		}
+		//check each tag if they are already mapped to the photo
+		for(Tag t: existingTags) {
+			if(TagPhotoService.checkMapping(t.getTag_id(), photoid))
+				confirmedTags.add(t);
+		}
+		//map the tag to photo for confirmed tags
+		if(!confirmedTags.isEmpty()) {
+			for(Tag s: confirmedTags) {
+				tpr.setTag_id(s.getTag_id());
+				TagPhotoService.addTagPhotoRelation(tpr);
+			}
+		}
+		System.out.println("Tag input recieved: " + request.getParameter("tags"));
+		System.out.println("Photo id recieved: " + request.getParameter("photoId"));
+	}
+	
+	public void shareTo(HttpServletRequest request, HttpServletResponse response) {
+		ArrayList<Users> confirmedUsers = new ArrayList<Users>();
+		ArrayList<Users> unmappedUsers = new ArrayList<Users>();
+		ArrayList<String> existingUsers = new ArrayList<String>();
+		int photoid = Integer.parseInt(request.getParameter("photoId"));
+		Shared_Photos sp = new Shared_Photos();
+		sp.setPhoto_id(photoid);
+		//split the inputs
+		String[] shareTo = SharedPhotoService.split(request.getParameter("share"));
+		//check each user if they exist
+		for(String s: shareTo) {
+			System.out.println("inside for loop: " + s);
+			if(UserService.checkUserForMapping(s)) {
+				System.out.println("inside if inside for loop: " + s);
+				existingUsers.add(s);
+			}
+		}
+		//query each user
+		System.out.println("inside existingUsers");
+		for(String s: existingUsers) {
+			System.out.println(s);
+			confirmedUsers.add(UserService.getUser(s));
+		}
+		//check each user if they are already mapped to the photo
+		System.out.println("inside confirmedUsers");
+		for(Users s: confirmedUsers) {
+			System.out.println(s.toString());
+			if(SharedPhotoService.checkMapping(s.getUsers_username(), photoid))
+				unmappedUsers.add(s);
+		}
+		//map each user to the photo
+		System.out.println("inside unmappedUsers");
+		for(Users s: unmappedUsers) {
+			System.out.println(s.toString());
+			sp.setShared_user_username(s.getUsers_username());
+			SharedPhotoService.addSharedPhoto(sp);
+		}
+		System.out.println("Share input recieved: " + request.getParameter("share"));
+		System.out.println("Photo id recieved: " + request.getParameter("photoId"));
 	}
 }

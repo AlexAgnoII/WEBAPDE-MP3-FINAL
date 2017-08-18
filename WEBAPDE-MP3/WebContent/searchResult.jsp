@@ -76,15 +76,18 @@
       </div>
       
          <div id="sharepicmodal" class="modal">
-       		 	Add tags to <span id="sharePChosen"></span>:
-       		 	<br>Enter tags: <input type = "text" name = "tags">
-        		
-        
+         	<form action="post" action = "shareTo">
+        		Share <span id="tagPChosen"></span> to: 
+        		<br>Share to: <input type = "text" name = "share">
+        	</form>
          </div>
         
          <div id="addtagmodal" class="modal">
-        		Share <span id="tagPChosen"></span> to: 
-        		<br>Share to: <input type = "text" name = "share">
+         	<form action="post" action = "addTags">
+       		 	Add tags to <span id="sharePChosen"></span>:
+       		 	<br>Enter tags: <input type = "text" name = "tags">
+       		 	<input type = "submit">
+        	</form>
          </div> 
          
     <div id="feed"> 

@@ -43,22 +43,47 @@
          </div>
          
           <div id="uploadmodal" class="modal">
-		        UPLOAD STUFF GOES HERE
-		        
-		  </div>
-        
-         <div id="sharepicmodal" class="modal">
+              <div id="uploadwrapper">
+                  <form method="post" action="upload" id="uploadPic" enctype="multipart/form-data">
+                      
+                    <input type="file" id= "uploadb" name="myFile" accept="image/*" onchange="readURL(this);" data-classIcon="icon-plus"><br><hr>
+                        Title: <input type = "text" name ="title" id="titlef"><br>
+                        Description: <input type = "text" name = "description" id="descf"><br>
+                        Tags: <input type = "text" name = "tags" id="tagsf"><br>
+
+					      <input name="group1" type="radio" id="pu" value="public"/>
+      					  <label for="pu">Public</label> <br>                        
+					      <input name="group1" type="radio" id="pr" value="private"/>
+					      <label for="pr">Private</label> <br>
+
+                      
+                        Share to<input type = "text" name = "share" id="sharef"><br>
+                    	<input type="submit">
+                    </form>
+
+                <div id="question">
+                    <a class="waves-effect waves-light btn" id="uploadbm">Upload</a>
+                    <a class="waves-effect waves-light btn" id="backbm" href="profile.jsp">Back</a> <br>
+                </div>
+             </div>
+        </div>
+         <div id="addtagmodal" class="modal">
+			<form action="post" action = "addTags">
        		 	Add tags to <span id="sharePChosen"></span>:
        		 	<br>Enter tags: <input type = "text" name = "tags">
-        		
-        
-         </div>
-        
-         <div id="addtagmodal" class="modal">
-        		Share <span id="tagPChosen"></span> to: 
-        		<br>Share to: <input type = "text" name = "share">
+       		 	<input type = "submit">
+        	</form>
          </div> 
         
+        <div id="sharepicmodal" class="modal">
+			<form method="post" action="shareTo" id="shareForm">
+        		Share <span id="sharePChosen"></span> to: 
+        		<br><input type = "text" name = "share" id="shareLoc">
+        		<input type="hidden" name="photoId" id="idShareHolder">
+        		<button id="submitShare">Submit</button>
+        	</form>
+         </div>
+         
         <div id="navbar">
                 <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
                 <p id="title"> this.<br>pic</p></a>

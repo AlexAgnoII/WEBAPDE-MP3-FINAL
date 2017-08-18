@@ -75,6 +75,29 @@
            	  console.log("name: " + photoName);
            	  $("span#sharePChosen").html(photoName);
              });
+             
+             $("button#submitTag").click(function() {
+            	 if($("input#tagLoc").val().length == 0  ||$("input#tagLoc").val().length == '') {
+            		 Materialize.toast('Please enter an input!', 3000);
+            	 }
+            	 
+            	 else {
+            		 $("input#idTagHolder").val(photoID);
+            		 $("form#tagForm").submit();
+            	 }
+              });
+              
+              $("button#submitShare").click(function() {
+	            	 if($("input#shareLoc").val().length == 0  ||$("input#shareLoc").val().length == '') {
+	            		 Materialize.toast('Please enter an input!', 3000);
+	            	 }
+	            	 
+	            	 else {
+	            		 $("input#idShareHolder").val(photoID);
+	            		 $("form#shareForm").submit();
+	            	 }
+	           });
+              
 		});
 
            
