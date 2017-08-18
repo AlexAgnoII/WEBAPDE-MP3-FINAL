@@ -231,8 +231,9 @@ public class PhotoController extends HttpServlet {
 		System.out.println("Title: " + request.getParameter("title"));
 		System.out.println("Description: " + request.getParameter("description"));
 		System.out.println("URL:" + request.getParameter("pic"));
-		System.out.println("Privacy: " + request.getParameter("privacy"));
+		System.out.println("Privacy: " + request.getParameter("group1"));
 		System.out.println("Tags: " + request.getParameter("tags"));
+		System.out.println("Shared to: " + request.getParameter("share"));
 		
 		String tagNames[] = TagService.split(request.getParameter("tags"));
 		ArrayList<Tag> tagObjects = new ArrayList<Tag>();
@@ -247,9 +248,9 @@ public class PhotoController extends HttpServlet {
 		}
 		
 		/**Get Upload url**/
-		File ROOT = new File("C:\\Users\\Claude\\Desktop\\WEBAPDE SUPER FINAL\\WEBAPDE-MP3-FINAL\\WEBAPDE-MP3\\WebContent\\img");
+		File ROOT = new File("C:\\Users\\Claude\\Desktop\\WEBAPDE SUPER FINAL 2\\WEBAPDE-MP3-FINAL\\WEBAPDE-MP3\\WebContent\\img");
 		String privacyPath;
-		if(request.getParameter("privacy").equals("private"))
+		if(request.getParameter("group1").equals("private"))
 			privacyPath = "\\private\\";
 		else privacyPath = "\\public\\";
 		FOLDER = new File(ROOT.getAbsolutePath() + privacyPath);
@@ -270,7 +271,7 @@ public class PhotoController extends HttpServlet {
 		System.out.println("I added photos.");
 		/**----------------**/
 		String dbPath;
-		if(request.getParameter("privacy").equals("private"))
+		if(request.getParameter("group1").equals("private"))
 			dbPath = "img\\private\\" + fileName;
 		else dbPath = "img\\public\\" + fileName;
 		System.out.println("For private: " + dbPath);
@@ -282,7 +283,7 @@ public class PhotoController extends HttpServlet {
 		p.setPhoto_title(request.getParameter("title"));
 		p.setPhoto_description(request.getParameter("description"));
 		p.setPhoto_url(request.getParameter("pic"));
-		p.setPhoto_privacy(request.getParameter("privacy"));
+		p.setPhoto_privacy(request.getParameter("group1"));
 		p.setPhoto_url(filePath);
 		
 		PhotoService.addPhoto(p);
@@ -297,7 +298,7 @@ public class PhotoController extends HttpServlet {
 		}
 		
 		//if private, map shared photos
-		if(request.getParameter("share").equals("private")) {
+		if(request.getParameter("group1").equals("private")) {
             Shared_Photos sp = new Shared_Photos();
             sp.setPhoto_id(p.getPhoto_id());
             String[] sharedTo = SharedPhotoService.split(request.getParameter("share"));
@@ -349,11 +350,13 @@ public class PhotoController extends HttpServlet {
 		//split the inputs
 		String[] shareTo = SharedPhotoService.split(request.getParameter("share"));
 		//check each user if they exist
-		for(String s: shareTo) {
-			System.out.println("inside for loop: " + s);
-			if(UserService.checkUserForMapping(s)) {
-				System.out.println("inside if inside for loop: " + s);
-				existingUsers.add(s);
+		if(shareTo == null) {
+			for(String s: shareTo) {
+				System.out.println("inside for loop: " + s);
+				if(UserService.checkUserForMapping(s)) {
+					System.out.println("inside if inside for loop: " + s);
+					existingUsers.add(s);
+				}
 			}
 		}
 		//query each user
