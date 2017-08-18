@@ -66,13 +66,13 @@
         
          <div id="sharepicmodal" class="modal">
        		 	Add tags to <span id="sharePChosen"></span>:
-       		 	<br>SHARE PIC  STUFF GOES HERE
+       		 	<br>Enter tags: <input type = "text" name = "tags">
         		
          </div>
         
          <div id="addtagmodal" class="modal">
         		Share <span id="tagPChosen"></span> to: 
-        		<br>ADD TAG STUFF GOES HERE
+        		<br>Share to: <input type = "text" name = "share">
          </div>
         
         <div id="navbar">

@@ -38,6 +38,30 @@ public class UserService {
 		}
 	}
 	
+	public static boolean checkUser(String username) {
+		Users s = null;
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+		
+		EntityTransaction trans = em.getTransaction();
+		
+		try{
+			trans.begin();
+			// select student with given id
+			s = em.find(Users.class, username);
+			if(s == null)
+				return true;
+			trans.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			em.close();
+		}
+		
+		return false;
+	}
+	
 	public static boolean checkUser(String username, String password) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
 		

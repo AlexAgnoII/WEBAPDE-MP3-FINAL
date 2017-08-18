@@ -37,7 +37,7 @@ import service.UserService;
 @MultipartConfig
 public class PhotoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    public static File FOLDER;   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -224,32 +224,37 @@ public class PhotoController extends HttpServlet {
 	}
 	
 	public void addPhoto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("Uploaded by: " + request.getSession().getAttribute("un").toString());
-//		System.out.println("Title: " + request.getParameter("title"));
-//		System.out.println("Description: " + request.getParameter("description"));
-//		System.out.println("URL:" + request.getParameter("pic"));
-//		System.out.println("Privacy: " + request.getParameter("privacy"));
-//		System.out.println("Tags: " + request.getParameter("tags"));
-//		
-//		String tagNames[] = TagService.split(request.getParameter("tags"));
-//		ArrayList<Tag> tagObjects = new ArrayList<Tag>();
-//		for(String t: tagNames) {
-//			TagService.checkTag(t);
-//			tagObjects.add(TagService.queryTag(t));
-//		}
-//		System.out.println("tagObjects contains ");
-//		for(Tag t: tagObjects) {
-//			System.out.println("Tag id: " + t.getTag_id());
-//			System.out.println("Tag name: " + t.getTag_name());
-//		}
+		System.out.println("Uploaded by: " + request.getSession().getAttribute("un").toString());
+		System.out.println("Title: " + request.getParameter("title"));
+		System.out.println("Description: " + request.getParameter("description"));
+		System.out.println("URL:" + request.getParameter("pic"));
+		System.out.println("Privacy: " + request.getParameter("privacy"));
+		System.out.println("Tags: " + request.getParameter("tags"));
+		
+		String tagNames[] = TagService.split(request.getParameter("tags"));
+		ArrayList<Tag> tagObjects = new ArrayList<Tag>();
+		for(String t: tagNames) {
+			TagService.checkTag(t);
+			tagObjects.add(TagService.queryTag(t));
+		}
+		System.out.println("tagObjects contains ");
+		for(Tag t: tagObjects) {
+			System.out.println("Tag id: " + t.getTag_id());
+			System.out.println("Tag name: " + t.getTag_name());
+		}
 		
 		/**Get Upload url**/
-		File FOLDER = new File("C:\\Users\\Alex II\\WEBAPDE-MP3-FINAL\\WEBAPDE-MP3\\WebContent\\img");
+		File ROOT = new File("C:\\Users\\Claude\\Desktop\\WEBAPDE SUPER FINAL\\WEBAPDE-MP3-FINAL\\WEBAPDE-MP3\\WebContent\\img");
+		String privacyPath;
+		if(request.getParameter("privacy").equals("private"))
+			privacyPath = "\\private\\";
+		else privacyPath = "\\public\\";
+		FOLDER = new File(ROOT.getAbsolutePath() + privacyPath);
+		System.out.println(FOLDER.getAbsolutePath());
 		Part part = request.getPart("myFile");
 		System.out.println("party: " + part);
 		String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 		System.out.println("Fileame: " + fileName);
-		
 		File file = new File(FOLDER, fileName);
 		InputStream fileInputStream = part.getInputStream();
 		Files.copy(fileInputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -261,41 +266,43 @@ public class PhotoController extends HttpServlet {
 		//System.out.println(request.getParameter("pic"));
 		System.out.println("I added photos.");
 		/**----------------**/
+		String dbPath;
+		if(request.getParameter("privacy").equals("private"))
+			dbPath = "img\\private\\" + fileName;
+		else dbPath = "img\\public\\" + fileName;
+		System.out.println("For private: " + dbPath);
+		System.out.println("For public: " + dbPath);
+		String filePath = dbPath;
 		
-		String privatePath = "img\\private\\" + fileName;
-		String publicPath = "img\\public\\" + fileName;
-		System.out.println("For private: " + privatePath);
-		System.out.println("For public: " + publicPath);
-//		
-//		Photo p = new Photo();
-//		p.setUser_username(request.getSession().getAttribute("un").toString());
-//		p.setPhoto_title(request.getParameter("title"));
-//		p.setPhoto_description(request.getParameter("description"));
-//		p.setPhoto_url(request.getParameter("pic"));
-//		p.setPhoto_privacy(request.getParameter("privacy"));
-//		
-//		PhotoService.addPhoto(p);
-//	
-//		//add Tag Photo Relation
-//		Tag_Photo_Relation tpr = new Tag_Photo_Relation();
-//		tpr.setPhoto_id(p.getPhoto_id());
-//		for(Tag t: tagObjects) {
-//			tpr.setTag_id(t.getTag_id());
-//			TagPhotoService.addTagPhotoRelation(tpr);
-//			System.out.println("photo id: " + tpr.getPhoto_id() + " tag id " + t.getTag_id() + "name " + t.getTag_name());
-//		}
-//		
-//		//if private, map shared photos
-//		if(request.getParameter("share").equals("private")) {
-//            Shared_Photos sp = new Shared_Photos();
-//            sp.setPhoto_id(p.getPhoto_id());
-//            String[] sharedTo = SharedPhotoService.split(request.getParameter("share"));
-//            for(String s: sharedTo) {
-//                sp.setShared_user_username(s);
-//                SharedPhotoService.addSharedPhoto(sp);
-//            }
-//      }
-
+		Photo p = new Photo();
+		p.setUser_username(request.getSession().getAttribute("un").toString());
+		p.setPhoto_title(request.getParameter("title"));
+		p.setPhoto_description(request.getParameter("description"));
+		p.setPhoto_url(request.getParameter("pic"));
+		p.setPhoto_privacy(request.getParameter("privacy"));
+		p.setPhoto_url(filePath);
+		
+		PhotoService.addPhoto(p);
+	
+		//add Tag Photo Relation
+		Tag_Photo_Relation tpr = new Tag_Photo_Relation();
+		tpr.setPhoto_id(p.getPhoto_id());
+		for(Tag t: tagObjects) {
+			tpr.setTag_id(t.getTag_id());
+			TagPhotoService.addTagPhotoRelation(tpr);
+			System.out.println("photo id: " + tpr.getPhoto_id() + " tag id " + t.getTag_id() + "name " + t.getTag_name());
+		}
+		
+		//if private, map shared photos
+		if(request.getParameter("share").equals("private")) {
+            Shared_Photos sp = new Shared_Photos();
+            sp.setPhoto_id(p.getPhoto_id());
+            String[] sharedTo = SharedPhotoService.split(request.getParameter("share"));
+            for(String s: sharedTo) {
+                sp.setShared_user_username(s);
+                SharedPhotoService.addSharedPhoto(sp);
+            }
+      }
 
 		response.sendRedirect("profile.jsp");
 	}
