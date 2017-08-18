@@ -1,5 +1,6 @@
 		
 		var photoID;
+		var photoName;
 		$(document).ready(function() {
 			$("a#searchbmodal").click(function() {
 	        	var searchTerm = $("#searchbox").val();
@@ -61,12 +62,18 @@
              
              $("a.addtagb").click(function() {
            	  photoID = $(this).attr("data-photoId");
-           	  console.log(photoID);
+           	  photoName = $(this).attr("data-photoName");
+           	  console.log("id:" + photoID);
+           	  console.log("name: " + photoName);
+           	  $("span#tagPChosen").html(photoName);
              });
              
              $("a.sharepicb").click(function() {
            	  photoID = $(this).attr("data-photoId");
-           	  console.log(photoID);
+           	  photoName = $(this).attr("data-photoName");
+           	  console.log("id:" + photoID);
+           	  console.log("name: " + photoName);
+           	  $("span#sharePChosen").html(photoName);
              });
 		});
 

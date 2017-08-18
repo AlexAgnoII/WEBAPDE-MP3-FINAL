@@ -11,7 +11,7 @@
             });
             
             var photoID;
-            
+            var photoName;
             $(document).ready(function() {	            
 	            //Submit form once image if clicked.
 				$("a#searchbmodal").click(function() {
@@ -71,11 +71,17 @@
 	             
 	              $("a.addtagb").click(function() {
 	            	  photoID = $(this).attr("data-photoId");
-	            	  console.log(photoID);
+	            	  photoName = $(this).attr("data-photoName");
+	            	  console.log("id:" + photoID);
+	            	  console.log("name: " + photoName);
+	            	  $("span#tagPChosen").html(photoName);
 	              });
 	              
 	              $("a.sharepicb").click(function() {
 	            	  photoID = $(this).attr("data-photoId");
-	            	  console.log(photoID);
+	            	  photoName = $(this).attr("data-photoName");
+	            	  console.log("id:" + photoID);
+	            	  console.log("name: " + photoName);
+	            	  $("span#sharePChosen").html(photoName);
 	              });
 	         });

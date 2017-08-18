@@ -76,12 +76,15 @@
       </div>
       
          <div id="sharepicmodal" class="modal">
-       		 	SHARE PIC  STUFF GOES HERE
+       		 	Add tags to <span id="sharePChosen"></span>:
+       		 	<br>SHARE PIC  STUFF GOES HERE
+        		
         
          </div>
         
          <div id="addtagmodal" class="modal">
-        		ADD TAG STUFF GOES HERE
+        		Share <span id="tagPChosen"></span> to: 
+        		<br>ADD TAG STUFF GOES HERE
          </div> 
          
     <div id="feed"> 
@@ -111,11 +114,11 @@
 		                
 		                <div class="iwrapperbottom">
 		                	<c:if test="${sessionScope.un == p.user_username}">
-		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" data-photoId="${p.photo_id}"> <!-- switched sharepicb from ID to Class -->
+		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" data-photoId="${p.photo_id}" data-photoName="${p.photo_title}"> <!-- switched sharepicb from ID to Class -->
 		                      		<i class="material-icons logos">supervisor_account</i>
 		                      	</a>
 		                      
-		                      	<a class="modal-trigger addtagb" href="#addtagmodal" data-photoId="${p.photo_id}"> <!-- switched addtagb from ID to Class -->
+		                      	<a class="modal-trigger addtagb" href="#addtagmodal" data-photoId="${p.photo_id}" data-photoName="${p.photo_title}"> <!-- switched addtagb from ID to Class -->
 		                      		<i class="material-icons logos">add_location</i>
 		                      	</a>
 		                 	</c:if>
