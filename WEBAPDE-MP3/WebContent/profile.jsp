@@ -115,11 +115,11 @@
 		                
 		                <div class="iwrapperbottom">
 		                	<c:if test="${sessionScope.un == p.user_username}">
-		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" > <!-- switched sharepicb from ID to Class -->
+		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" data-photoId="${p.photo_id}"> <!-- switched sharepicb from ID to Class -->
 		                      		<i class="material-icons logos">supervisor_account</i>
 		                      	</a>
 		                      
-		                      	<a class="modal-trigger addtagb" href="#addtagmodal" > <!-- switched addtagb from ID to Class -->
+		                      	<a class="modal-trigger addtagb" href="#addtagmodal" data-photoId="${p.photo_id}"> <!-- switched addtagb from ID to Class -->
 		                      		<i class="material-icons logos">add_location</i>
 		                      	</a>
 		                	</c:if>

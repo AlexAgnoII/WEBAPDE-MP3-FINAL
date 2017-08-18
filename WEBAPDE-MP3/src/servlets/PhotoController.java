@@ -72,29 +72,37 @@ public class PhotoController extends HttpServlet {
 		System.out.println("User to visit: " + userToVisit);
 		System.out.println("Current user: " + currentUser);
 		
-		List<Photo> photoList;
-		Users theUser = UserService.getUser(userToVisit);
-		System.out.println("TheUser: " + theUser.getUsers_username());
-
-		//get all photos of user
-		photoList = PhotoService.getUserPhotos(currentUser, userToVisit); //replace this with new function 
-		
-		if(photoList != null) {
-			//display all photos (for testing)
-			System.out.println("Photos here: ");
-			for(int i = 0; i < photoList.size(); i++) {
-				System.out.print("Photo#" + (i+1) + ": " + photoList.get(i).getPhoto_title());
-				System.out.println("URL: "  + photoList.get(i).getPhoto_url());
-				
+		if(!userToVisit.equals(currentUser)) {
+			List<Photo> photoList;
+			Users theUser = UserService.getUser(userToVisit);
+			System.out.println("TheUser: " + theUser.getUsers_username());
+	
+			//get all photos of user
+			photoList = PhotoService.getUserPhotos(currentUser, userToVisit); //replace this with new function 
+			
+			if(photoList != null) {
+				//display all photos (for testing)
+				System.out.println("Photos here: ");
+				for(int i = 0; i < photoList.size(); i++) {
+					System.out.print("Photo#" + (i+1) + ": " + photoList.get(i).getPhoto_title());
+					System.out.println("URL: "  + photoList.get(i).getPhoto_url());
+					
+				}
 			}
+			
+			System.out.println("Forwarding to profile.jsp..");
+			System.out.println("View specific user");
+			request.setAttribute("photoList", photoList);
+			request.setAttribute("user", theUser);
+			
+			request.getRequestDispatcher("profile.jsp").forward(request, response);
 		}
 		
-		System.out.println("Forwarding to profile.jsp..");
-		System.out.println("View specific user");
-		request.setAttribute("photoList", photoList);
-		request.setAttribute("user", theUser);
-		
-		request.getRequestDispatcher("profile.jsp").forward(request, response);
+		//Same person, just do this.
+		else {
+			System.out.println("same person, just use showuserphotos.");
+			showUserPhotos(request, response);
+		}
 	}
 
 	/**
@@ -115,14 +123,15 @@ public class PhotoController extends HttpServlet {
 	private void showUserPhotos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		List<Photo> photoList;
-		Users theUser = new Users();
-		theUser.setUsers_username("testing");
-		theUser.setUsers_description("Testing purposes");
+		Users theUser;
 		String username = request.getSession().getAttribute("un").toString();
+		
 		//get all photos of user
 		photoList = PhotoService.getUserPhotos(username); //replace this with new function 
 		
 		//get the user itself
+		theUser = UserService.getUser(username);
+		
 		System.out.println(request.getSession().getAttribute("un"));
 		if(photoList != null) {
 			//display all photos (for testing)
@@ -200,13 +209,14 @@ public class PhotoController extends HttpServlet {
 		if(request.getSession().getAttribute("un") == null)
 			photoList = PhotoService.filterByTag(term);
 		else {
-			String username = request.getAttribute("un").toString();
+			String username = request.getSession().getAttribute("un").toString();
 			photoList = PhotoService.filterByTag(username, term);
 		}
 		
-		for(Photo p: photoList) {
-			System.out.println(p.toString());
-		}
+		if(photoList!=null)
+			for(Photo p: photoList) {
+				System.out.println(p.toString());
+			}
 
 		request.setAttribute("term", term);
 		request.setAttribute("photoList", photoList);

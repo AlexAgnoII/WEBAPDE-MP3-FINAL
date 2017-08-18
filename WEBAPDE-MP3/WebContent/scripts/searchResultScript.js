@@ -1,5 +1,5 @@
 		
-
+		var photoID;
 		$(document).ready(function() {
 			$("a#searchbmodal").click(function() {
 	        	var searchTerm = $("#searchbox").val();
@@ -58,6 +58,16 @@
                 startTop: '4%',
                 endingTop: '10%',
             });
+             
+             $("a.addtagb").click(function() {
+           	  photoID = $(this).attr("data-photoId");
+           	  console.log(photoID);
+             });
+             
+             $("a.sharepicb").click(function() {
+           	  photoID = $(this).attr("data-photoId");
+           	  console.log(photoID);
+             });
 		});
 
            

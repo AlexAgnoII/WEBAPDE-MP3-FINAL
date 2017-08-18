@@ -87,13 +87,9 @@
 		                
 		                <div class="iwrapper">
 		                    <p class="uname"> 
-			                    <c:if test="${sessionScope.un != p.user_username}">
 			                    	<a data-userName="${p.user_username}" class="userNameClicky">${p.user_username}</a>
-			                    </c:if>
 			                    
-			                    <c:if test="${sessionScope.un == p.user_username}">
-			                    	${p.user_username}
-			                    </c:if>
+
 		                    </p>
 		                    <br>
 		                    <br>
@@ -103,11 +99,11 @@
 		                
 		                <div class="iwrapperbottom">
 		                	<c:if test="${sessionScope.un == p.user_username}">
-		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" > <!-- switched sharepicb from ID to Class -->
+		                      	<a class="modal-trigger sharepicb" href="#sharepicmodal" data-photoId="${p.photo_id}"> <!-- switched sharepicb from ID to Class -->
 		                      		<i class="material-icons logos">supervisor_account</i>
 		                      	</a>
 		                      
-		                      	<a class="modal-trigger addtagb" href="#addtagmodal" > <!-- switched addtagb from ID to Class -->
+		                      	<a class="modal-trigger addtagb" href="#addtagmodal" data-photoId="${p.photo_id}"> <!-- switched addtagb from ID to Class -->
 		                      		<i class="material-icons logos">add_location</i>
 		                      	</a>
 		                	</c:if>

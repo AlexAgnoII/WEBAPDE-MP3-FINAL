@@ -18,7 +18,7 @@
                   document.getElementById(divName).appendChild(newdiv);
                   counter++;    
             }
-            
+             var photoID;
              $(document).ready(function() {             
 	 	        //Submit form once image if clicked.
      			$("a#searchbmodal").click(function() {
@@ -76,6 +76,17 @@
 	            	 
 	            	 window.location = "visitThisUser?user=" + username;
 	              });
+	              
+	              $("a.addtagb").click(function() {
+	            	  photoID = $(this).attr("data-photoId");
+	            	  console.log(photoID);
+	              });
+	              
+	              $("a.sharepicb").click(function() {
+	            	  photoID = $(this).attr("data-photoId");
+	            	  console.log(photoID);
+	              });
+	              
 	            
 	          
              });
